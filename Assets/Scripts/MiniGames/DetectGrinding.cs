@@ -22,7 +22,7 @@ public class DetectGrinding : MonoBehaviour
         GrindIndex++;
         if (GrindIndex >= CurrentIngredientData.GrindedSpriteList.Count)
         {
-            MG_GrindManager.Instance.EndGame();
+            GameManager.Instance.EndMiniGame();
             return;
         }
         

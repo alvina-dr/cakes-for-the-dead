@@ -127,6 +127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 282300424}
+  - component: {fileID: 282300427}
   - component: {fileID: 282300426}
   - component: {fileID: 282300425}
   m_Layer: 5
@@ -175,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10:00
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -254,6 +255,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282300423}
   m_CullTransparentMesh: 1
+--- !u!114 &282300427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282300423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f059b3afce15c7a47b3fd0b7f8a0723b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textUI: {fileID: 282300425}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,11 +671,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828a56144c9cb5b4db1c4a353f08b8fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GeneralData: {fileID: 11400000, guid: 0fdacd2df385f6642bf324f381570d1f, type: 2}
   UIManager: {fileID: 1257838411}
   RecipeDataList: []
   CurrentRecipeData: {fileID: 0}
   CurrentRecipeMiniGameIndex: 0
   Timer: 0
+  IsFirstGameLaunched: 0
   CurrentScore: 0
 --- !u!4 &764833401
 Transform:
@@ -1156,6 +1172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RecipeRequest: {fileID: 762655821}
+  TimerUI: {fileID: 282300427}
 --- !u!1 &1669845837
 GameObject:
   m_ObjectHideFlags: 0

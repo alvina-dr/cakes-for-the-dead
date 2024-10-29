@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    [Header("Data")]
+    public GeneralData GeneralData;
+
     [Header("References")]
     public UI_Manager UIManager;
 
@@ -28,7 +31,7 @@ public class GameManager : MonoBehaviour
     public RecipeData CurrentRecipeData;
     public int CurrentRecipeMiniGameIndex = 0;
     public float Timer = 0;
-    public bool IsFirstGameLaunched;
+    public bool IsFirstGameLaunched = false;
 
     [Header("Score")]
     public int CurrentScore = 0;
@@ -45,9 +48,23 @@ public class GameManager : MonoBehaviour
         LaunchGame();
     }
 
+    private void Update()
+    {
+        if (IsFirstGameLaunched)
+        {
+            Timer -= Time.deltaTime;
+            UIManager.TimerUI.SetTextValue(Mathf.RoundToInt(Timer).ToString());
+        }
+
+        if (Timer <= 0)
+        {
+            EndDay();
+        }
+    }
+
     public void LaunchGame()
     {
-        SelectRandomRecipe();
+        if (CurrentRecipeData == null) SelectRandomRecipe();
         UIManager.RecipeRequest.SetupRecipeRequest(CurrentRecipeData);
     }
 
@@ -58,6 +75,7 @@ public class GameManager : MonoBehaviour
 
     public void LaunchRecipe()
     {
+        IsFirstGameLaunched = true;
         if (CurrentRecipeData == null)
         {
             Debug.LogError("NO CURRENT RECIPE SELECTED");
@@ -76,5 +94,27 @@ public class GameManager : MonoBehaviour
     {
         if (CurrentRecipeData == null) return null;
         return CurrentRecipeData.MiniGameList[CurrentRecipeMiniGameIndex];
+    }
+
+    public void EndMiniGame()
+    {
+        SceneManager.UnloadSceneAsync(GetCurrentMiniGame().MiniGameLevelName);
+        CurrentRecipeMiniGameIndex++;
+        if (CurrentRecipeMiniGameIndex >= GameManager.Instance.CurrentRecipeData.MiniGameList.Count)
+        {
+            //end recipe
+        }
+        else //load next minigame
+        {
+            SceneManager.LoadScene(GameManager.Instance.GetCurrentMiniGame().MiniGameLevelName, LoadSceneMode.Additive);
+        }
+    }
+
+    public void EndDay()
+    {
+        Timer = GeneralData.DayDuration;
+        IsFirstGameLaunched = false;
+        //show interface for end of day
+        //check if enough score
     }
 }

@@ -15,6 +15,7 @@ MonoBehaviour:
   CakeSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   CakeName: Anger
   MiniGameList:
+  - {fileID: 11400000, guid: 07b5dbde06910664f8bc660a9074a5b5, type: 2}
   - {fileID: 11400000, guid: 8def2e1aaed79e8438500fa83868a144, type: 2}
   - {fileID: 11400000, guid: 9b382d65d84cfb14ab74f7727ead7967, type: 2}
   - {fileID: 11400000, guid: 9b382d65d84cfb14ab74f7727ead7967, type: 2}
