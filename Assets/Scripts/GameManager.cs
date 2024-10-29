@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public RecipeData CurrentRecipeData;
     public int CurrentRecipeMiniGameIndex = 0;
     public float Timer = 0;
+    public bool IsFirstGameLaunched;
 
     [Header("Score")]
     public int CurrentScore = 0;
