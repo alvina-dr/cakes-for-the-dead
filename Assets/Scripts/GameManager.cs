@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public List<RecipeData> RecipeDataList = new List<RecipeData>();
     public RecipeData CurrentRecipeData;
     public int CurrentRecipeMiniGameIndex = 0;
+    public float Timer = 0;
 
     [Header("Score")]
     public int CurrentScore = 0;
