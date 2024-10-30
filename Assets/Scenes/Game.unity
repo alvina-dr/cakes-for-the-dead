@@ -674,7 +674,7 @@ MonoBehaviour:
   GeneralData: {fileID: 11400000, guid: 0fdacd2df385f6642bf324f381570d1f, type: 2}
   UIManager: {fileID: 1257838411}
   RecipeDataList: []
-  CurrentRecipeData: {fileID: 11400000, guid: e7abbff4d21df3b49a61b59745884c5c, type: 2}
+  CurrentRecipeData: {fileID: 11400000, guid: 64e4b76f020b3314fa932ee4b92a1fc2, type: 2}
   CurrentRecipeMiniGameIndex: 0
   Timer: 0
   IsFirstGameLaunched: 0

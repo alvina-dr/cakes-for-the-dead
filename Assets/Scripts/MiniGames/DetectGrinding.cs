@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DetectGrinding : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class DetectGrinding : MonoBehaviour
     private float shakeForce;
     [SerializeField]
     private float shakeDuration;
-    //private Sequence cameraShake;
+
+    public UnityEvent onGrind = new UnityEvent();
 
     private void Start()
     {
@@ -32,6 +34,7 @@ public class DetectGrinding : MonoBehaviour
         GrindIndex++;
         if (GrindIndex >= CurrentIngredientData.GrindedSpriteList.Count)
         {
+            onGrind.Invoke();
             GameManager.Instance.EndMiniGame();
             return;
         }
