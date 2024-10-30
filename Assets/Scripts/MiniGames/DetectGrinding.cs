@@ -31,10 +31,10 @@ public class DetectGrinding : MonoBehaviour
 
     public void Grind()
     {
+        onGrind.Invoke();
         GrindIndex++;
         if (GrindIndex >= CurrentIngredientData.GrindedSpriteList.Count)
         {
-            onGrind.Invoke();
             GameManager.Instance.EndMiniGame();
             return;
         }

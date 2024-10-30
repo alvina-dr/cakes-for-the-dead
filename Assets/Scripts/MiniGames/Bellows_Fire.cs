@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Bellows_Fire : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class Bellows_Fire : MonoBehaviour
     public float CookingDuration;
     public float CookingCurrentTime;
     public UI_SliderValue TimerSlider;
+    public UnityEvent onFireUp = new UnityEvent();
+    public UnityEvent onFireDown = new UnityEvent();
+    public UnityEvent onPerfectSoufflet = new UnityEvent();
+    public UnityEvent onSouffletWind = new UnityEvent();
 
     private void Start()
     {
@@ -22,7 +27,7 @@ public class Bellows_Fire : MonoBehaviour
         if (CookingCurrentTime > CookingDuration)
         {
             CookingCurrentTime = 0;
-            GameManager.Instance.EndMiniGame();
+            GameManager.Instance.EndMiniGame(); 
         }
     }
 
@@ -30,12 +35,17 @@ public class Bellows_Fire : MonoBehaviour
     {
         FireStrength++;
         SetFireSprite();
+        onFireUp.Invoke();
+        onPerfectSoufflet.Invoke();
+        onSouffletWind.Invoke();
     }
 
     public void ResetFireStrength()
     {
         FireStrength = 0;
         SetFireSprite();
+        onFireDown.Invoke();
+        onSouffletWind.Invoke();
     }
 
     public void SetFireSprite()
