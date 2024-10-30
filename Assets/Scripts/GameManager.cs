@@ -100,13 +100,13 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.UnloadSceneAsync(GetCurrentMiniGame().MiniGameLevelName);
         CurrentRecipeMiniGameIndex++;
-        if (CurrentRecipeMiniGameIndex >= GameManager.Instance.CurrentRecipeData.MiniGameList.Count)
+        if (CurrentRecipeMiniGameIndex >= CurrentRecipeData.MiniGameList.Count)
         {
             //end recipe
         }
         else //load next minigame
         {
-            SceneManager.LoadScene(GameManager.Instance.GetCurrentMiniGame().MiniGameLevelName, LoadSceneMode.Additive);
+            SceneManager.LoadScene(GetCurrentMiniGame().MiniGameLevelName, LoadSceneMode.Additive);
         }
     }
 
