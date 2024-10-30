@@ -1,82 +1,155 @@
+using JetBrains.Annotations;
+using NUnit.Framework;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class AppearCutLines : MonoBehaviour
 {
 
     [SerializeField]
     private GameObject cutLinePoint;
-    private GameObject linePointInstantiated;
     [SerializeField]
-    private GameObject[] allCutLines = new GameObject[10];
-    private Vector3 tempPosition; //position qui sera instanciée puis modifiée pour avoir toute la ligne
+    private GameObject mousePoint;
+    private GameObject linePointInstantiated;
+    public List<GameObject> allCutLines = new List<GameObject>();
+    public List<GameObject> mouseLines = new List<GameObject>();
+    private Vector3 startCutPosition; //position qui sera instanciï¿½e puis modifiï¿½e pour avoir toute la ligne
     private int lines = 0;
 
-    private bool randomizeLines = false;
+    private Vector3 mousePosition;
+
+    [SerializeField]
+    private Transform parentLines;
+
+    private bool gameStarted = false;
     private bool makeAppearLines = true;
-    [SerializeField]
-    private GameObject positionFirstPoint;
-    [SerializeField]
-    private GameObject positionSecondPoint;
-    [SerializeField]
-    private GameObject positionThirdPoint;
-    [SerializeField]
-    private GameObject positionFourthPoint;
+    private bool isPressed = false;
 
-    private Vector3 _startPosition;
-    private Vector3 _endPosition;
-
+    [SerializeField]
+    private float ajoutFlat;
+    private int linesLeft = 3;
+    private float scoreTotal;
     void Start()
     {
-        
+
     }
 
     void Update()
     {
-        if (randomizeLines)
+        if (!makeAppearLines && !gameStarted && linesLeft > 0)
         {
-            RandomizeLines();
-            randomizeLines = false;
+            makeAppearLines = true;
         }
-        if (makeAppearLines)
+        
+        Decoupe();
+    }
+
+    private void Lines()
+    {
+        float affine = Random.Range(-2.5f, 2.5f);
+        float x = -5;
+        int line = 0;
+        startCutPosition = new Vector3(x, positionY(x, affine));
+        float y = startCutPosition.y;
+        while (x < 5)
         {
-            for (int y = 0; y < 3; y++)
+            if (line > 3)
             {
-                switch (y)
-                {
-                    case 0:
-                        _startPosition = positionFirstPoint.transform.position;
-                        _endPosition = positionSecondPoint.transform.position;
-                        break;
-                    case 1:
-                        _startPosition = positionSecondPoint.transform.position;
-                        _endPosition = positionThirdPoint.transform.position;
-                        break;
-                    case 2:
-                        _startPosition = positionThirdPoint.transform.position;
-                        _endPosition = positionFourthPoint.transform.position;
-                        break;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    CalculateNextCutPoint();
-                    linePointInstantiated = Instantiate(cutLinePoint, tempPosition, Quaternion.identity);
-                    allCutLines[i] = linePointInstantiated;
-                }
+                x += .25f;
+                line = 0;
             }
-           
-            makeAppearLines = false;
+            if (positionY(x, affine) < 5 && positionY(x, affine) > -5)
+            {
+                linePointInstantiated = Instantiate(cutLinePoint, new Vector3(x, positionY(x, affine)), Quaternion.identity, parentLines);
+                allCutLines.Add(linePointInstantiated);
+            }
+            line++;
+            x += 0.05f;
         }
     }
 
-    private void RandomizeLines()
+    private float positionY(float x, float affine)
     {
-        positionFirstPoint.transform.position = new Vector3(positionFirstPoint.transform.position.x, Random.Range(-5,5), positionFirstPoint.transform.position.z);
-        positionSecondPoint.transform.position = new Vector3(positionSecondPoint.transform.position.x, Random.Range(-5, 5), positionSecondPoint.transform.position.z);
-        positionThirdPoint.transform.position = new Vector3(positionThirdPoint.transform.position.x, Random.Range(-5, 5), positionThirdPoint.transform.position.z);
-        positionFourthPoint.transform.position = new Vector3(positionFourthPoint.transform.position.x, Random.Range(-5, 5), positionFourthPoint.transform.position.z);
-    } //Permet d'avoir des position differentes a chaque entrée dans le mini jeu // il faudra simplement passer le bool randomizeLines a true dans l'appel
-    private void CalculateNextCutPoint()
+        float y = 0;
+        y = x * affine;
+        return y;
+    }
+
+    private void DestroyLines()
     {
-        tempPosition = positionFirstPoint.transform.position;
+        foreach (GameObject line in allCutLines)
+        {
+            Destroy(line);
+        }
+
+        foreach (GameObject line in mouseLines)
+        {
+            Destroy(line);
+        }
+    }
+
+    private void Decoupe()
+    {
+        Vector3 mousePos = Input.mousePosition + new Vector3(0, 0, 10);
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePos);
+        if (makeAppearLines)
+        {
+            Lines();
+            gameStarted = true;
+            linesLeft--;
+            makeAppearLines = false;
+        }
+        if (gameStarted && Input.GetMouseButtonDown(0))
+        {
+            isPressed = true;
+        }
+        if (gameStarted && isPressed && Input.GetMouseButton(0))
+        {
+            linePointInstantiated = Instantiate(mousePoint, mousePosition, Quaternion.identity, parentLines);
+            mouseLines.Add(linePointInstantiated);
+        }
+        if (gameStarted && isPressed && Input.GetMouseButtonUp(0))
+        {
+            isPressed = false;
+
+            float scoreCut = 0;
+            int scoreCutCount = 1;
+
+            foreach (GameObject objet in mouseLines)
+            {
+                Vector3 mousePoint = objet.transform.position;
+                scoreCutCount++;
+
+
+                float distance = Mathf.Sqrt(Mathf.Pow(mousePoint.x - allCutLines[0].transform.position.x, 2) + Mathf.Pow(mousePoint.y - allCutLines[0].transform.position.y, 2));
+
+                for (int i = 1; i < allCutLines.Count; i++)
+                {
+
+                    if (Mathf.Sqrt(Mathf.Pow(mousePoint.x - allCutLines[i].transform.position.x, 2) + Mathf.Pow(mousePoint.y - allCutLines[i].transform.position.y, 2)) < distance)
+                    {
+
+                        distance = Mathf.Sqrt(Mathf.Pow(mousePoint.x - allCutLines[i].transform.position.x, 2) + Mathf.Pow(mousePoint.y - allCutLines[i].transform.position.y, 2));
+
+                    }
+
+                }
+
+                scoreCut += distance;
+            }
+
+            scoreCut /= scoreCutCount;
+            scoreCut *= 10;
+            scoreCut = (1 / scoreCut);
+            scoreCut *= 100;
+
+            scoreTotal = Mathf.Clamp(scoreCut + ajoutFlat, 60 + Random.Range(1,9), 100);
+
+            DestroyLines();
+            gameStarted = false;
+            Debug.Log(scoreTotal);
+        }
     }
 }
