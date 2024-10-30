@@ -49,6 +49,7 @@ public class Bellows_Fire : MonoBehaviour
         for (int i = 0; i < SpriteRendererList.Count; i++)
         {
             SpriteRendererList[i].sprite = SpriteList[FireStrength];
+            SpriteRendererList[i].transform.parent.localScale = Vector3.one + (Vector3.one * FireStrength/5.0f);
         }
     }
 }
