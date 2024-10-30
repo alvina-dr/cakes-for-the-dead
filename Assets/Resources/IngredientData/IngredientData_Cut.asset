@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22549606d0a03b8459b4d14d3f4a45ae, type: 3}
+  m_Name: IngredientData_Cut
+  m_EditorClassIdentifier: 
+  InitialSprite: {fileID: 21300000, guid: bc6380e55218a2e4996eadee46a3af84, type: 3}
+  GrindedSpriteList:
+  - {fileID: 21300000, guid: bc6380e55218a2e4996eadee46a3af84, type: 3}
+  - {fileID: 21300000, guid: 6e7dda36b35a5284e99a2662113e6c1f, type: 3}
