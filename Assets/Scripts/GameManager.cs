@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public int CurrentRecipeMiniGameIndex = 0;
     public float Timer = 0;
     public bool IsFirstGameLaunched = false;
+    public bool IsPlayerMakingRecipe = false;
 
     [Header("Score")]
     public int TotalCurrentScore = 0;
@@ -44,6 +45,9 @@ public class GameManager : MonoBehaviour
         {
             RecipeDataList.Add(recipeDataArray[i]);
         }
+
+        Timer = GeneralData.DayDuration;
+        UIManager.TimerUI.SetTextValue(Mathf.RoundToInt(Timer).ToString());
 
         LaunchGame();
     }
@@ -58,7 +62,11 @@ public class GameManager : MonoBehaviour
 
         if (Timer <= 0)
         {
-            EndDay();
+            Timer = 0;
+            if (!IsPlayerMakingRecipe)
+            {
+                EndDay();
+            }
         }
     }
 
@@ -77,6 +85,7 @@ public class GameManager : MonoBehaviour
     {
         UIManager.MainScene.SetActive(false);
         IsFirstGameLaunched = true;
+        IsPlayerMakingRecipe = true;
         if (CurrentRecipeData == null)
         {
             Debug.LogError("NO CURRENT RECIPE SELECTED");
@@ -88,8 +97,16 @@ public class GameManager : MonoBehaviour
 
     public void FinishRecipe()
     {
-        UIManager.MainScene.SetActive(true);
+        UIManager.EndRecipeScene.SetActive(true);
+        IsPlayerMakingRecipe = false;
         CurrentRecipeMiniGameIndex = 0;
+    }
+
+    public void NextRecipe()
+    {
+        SelectRandomRecipe();
+        UIManager.RecipeRequest.SetupRecipeRequest(CurrentRecipeData);
+        //show dialog
     }
 
     public MiniGameData GetCurrentMiniGame()
@@ -118,7 +135,9 @@ public class GameManager : MonoBehaviour
     public void EndDay()
     {
         Timer = GeneralData.DayDuration;
+        UIManager.TimerUI.SetTextValue(Mathf.RoundToInt(Timer).ToString());
         IsFirstGameLaunched = false;
+        UIManager.EndDayScene.SetActive(true);
         //show interface for end of day
         //check if enough score
     }
