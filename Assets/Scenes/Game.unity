@@ -1461,23 +1461,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4815102177097604274, guid: bb7feb842b6646f4ba9f1417872581a1, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 600.5
       objectReference: {fileID: 0}
     - target: {fileID: 4815102177097604274, guid: bb7feb842b6646f4ba9f1417872581a1, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30
+      value: 258.5
       objectReference: {fileID: 0}
     - target: {fileID: 4815102177097604274, guid: bb7feb842b6646f4ba9f1417872581a1, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5.04
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4815102177097604274, guid: bb7feb842b6646f4ba9f1417872581a1, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5.04
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4815102177097604274, guid: bb7feb842b6646f4ba9f1417872581a1, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5.04
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4815102177097604274, guid: bb7feb842b6646f4ba9f1417872581a1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1536,9 +1536,21 @@ PrefabInstance:
       value: Cook
       objectReference: {fileID: 0}
     - target: {fileID: 4894826663553118692, guid: bb7feb842b6646f4ba9f1417872581a1, type: 3}
+      propertyPath: m_fontSize
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894826663553118692, guid: bb7feb842b6646f4ba9f1417872581a1, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: bf2cfb1664cb716488d95cef5e3d452f, type: 2}
+    - target: {fileID: 4894826663553118692, guid: bb7feb842b6646f4ba9f1417872581a1, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894826663553118692, guid: bb7feb842b6646f4ba9f1417872581a1, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 4894826663553118692, guid: bb7feb842b6646f4ba9f1417872581a1, type: 3}
       propertyPath: m_sharedMaterial
       value: 
