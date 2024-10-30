@@ -103,6 +103,8 @@ public class GameManager : MonoBehaviour
         if (CurrentRecipeMiniGameIndex >= CurrentRecipeData.MiniGameList.Count)
         {
             //end recipe
+            //select new recipe
+            //show final result
         }
         else //load next minigame
         {

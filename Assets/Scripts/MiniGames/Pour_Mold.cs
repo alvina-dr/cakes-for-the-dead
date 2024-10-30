@@ -9,6 +9,7 @@ public class Pour_Mold : MonoBehaviour
     public LayerMask FluidLayer;
     private int fullnessIndex = 0;
     [SerializeField] private TextMeshPro _fullnessIndicator;
+
     private void Start()
     {
         _fullnessIndicator.text = fullnessIndex.ToString();
