@@ -27,17 +27,19 @@ public class AppearCutLines : MonoBehaviour
 
     [SerializeField]
     private int linesLeft = 3;
-    private float scoreTotal;
-    void Start()
-    {
-
-    }
+    private int scoreTotal;
 
     void Update()
     {
         if (!makeAppearLines && !gameStarted && linesLeft > 0)
         {
             makeAppearLines = true;
+        } 
+        else if (!makeAppearLines && !gameStarted && linesLeft <= 0 )
+        {
+            //End game -> here add to total score
+            GameManager.Instance.EndMiniGame();
+            GameManager.Instance.AddToTotalScore(scoreTotal);
         }
         
         Decoupe();
@@ -149,11 +151,10 @@ public class AppearCutLines : MonoBehaviour
             scoreCut *= 100;
             scoreCut *= 1.5f;
 
-            scoreTotal += Mathf.Clamp(scoreCut, 5, 100);
+            scoreTotal += Mathf.RoundToInt(Mathf.Clamp(scoreCut, 5, 100));
 
             DestroyLines();
             gameStarted = false;
-            Debug.Log(scoreTotal);
         }
     }
 }
