@@ -38,6 +38,7 @@ public class Bellows_Fire : MonoBehaviour
         onFireUp.Invoke();
         onPerfectSoufflet.Invoke();
         onSouffletWind.Invoke();
+        Multiplicateur.Instance.AddMultiplicateur(1);
     }
 
     public void ResetFireStrength()
@@ -46,6 +47,7 @@ public class Bellows_Fire : MonoBehaviour
         SetFireSprite();
         onFireDown.Invoke();
         onSouffletWind.Invoke();
+        Multiplicateur.Instance.RemoveMultiplicateur(1);
     }
 
     public void SetFireSprite()

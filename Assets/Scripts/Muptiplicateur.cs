@@ -17,17 +17,18 @@ public class Multiplicateur : MonoBehaviour
             Instance = this;
         }
     }
+
     #endregion
     public int multiActuel;
     
-    public void AddMultiplicateur()
+    public void AddMultiplicateur(int increase)
     {
-        multiActuel++;
+        multiActuel+=increase;
     }
 
-    public void RemoveMultiplicateur()
+    public void RemoveMultiplicateur(int decrease)
     {
-        multiActuel--;
+        multiActuel-= decrease;
     }
 
     public void ResetMultiplicateur()
