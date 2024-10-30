@@ -152,34 +152,35 @@ public class AppearCutLines : MonoBehaviour
             scoreCut *= 1.5f;
             scoreCut = Mathf.Clamp(scoreCut, 5, 100);
 
+            scoreTotal += Mathf.RoundToInt(scoreCut);
+            #region Multis
             if (scoreCut < 50)
             {
                 ScoreManager.Instance.RemoveMultiplicateur(1);
             }
-            if (scoreCut > 75 && scoreCut < 90)
+            else if (scoreCut > 75 && scoreCut < 90)
             {
                 ScoreManager.Instance.AddMultiplicateur(1);
             }
-            if (scoreCut > 90)
+            else if (scoreCut > 90)
             {
                 ScoreManager.Instance.AddMultiplicateur(3);
             }
 
-            scoreTotal += Mathf.RoundToInt(scoreCut);
 
             if (scoreTotal < 100)
             {
                 ScoreManager.Instance.ResetMultiplicateur();
             }
-            if (scoreTotal > 275)
+            else if (scoreTotal > 275)
             {
                 ScoreManager.Instance.AddMultiplicateur(2);
             }
-            if (scoreTotal > 300)
+            else if (scoreTotal > 300)
             {
                 ScoreManager.Instance.AddMultiplicateur(6);
             }
-
+            #endregion
             DestroyLines();
             gameStarted = false;
         }
