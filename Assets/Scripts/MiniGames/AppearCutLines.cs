@@ -28,7 +28,6 @@ public class AppearCutLines : MonoBehaviour
     private bool isPressed = false;
 
     [SerializeField]
-    private float ajoutFlat;
     private int linesLeft = 3;
     private float scoreTotal;
     void Start()
@@ -88,6 +87,9 @@ public class AppearCutLines : MonoBehaviour
         {
             Destroy(line);
         }
+
+        allCutLines.Clear();
+        mouseLines.Clear();
     }
 
     private void Decoupe()
@@ -140,12 +142,15 @@ public class AppearCutLines : MonoBehaviour
                 scoreCut += distance;
             }
 
+            if (mouseLines.Count < 20) { scoreCut *= 20; }
+            else { scoreCut /= 1.5f; }
             scoreCut /= scoreCutCount;
             scoreCut *= 10;
             scoreCut = (1 / scoreCut);
             scoreCut *= 100;
+            scoreCut *= 1.5f;
 
-            scoreTotal = Mathf.Clamp(scoreCut + ajoutFlat, 60 + Random.Range(1,9), 100);
+            scoreTotal += Mathf.Clamp(scoreCut, 5, 100);
 
             DestroyLines();
             gameStarted = false;
