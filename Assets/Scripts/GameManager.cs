@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
 
     public void LaunchRecipe()
     {
+        UIManager.MainScene.SetActive(false);
         IsFirstGameLaunched = true;
         if (CurrentRecipeData == null)
         {
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
 
     public void FinishRecipe()
     {
+        UIManager.MainScene.SetActive(true);
         CurrentRecipeMiniGameIndex = 0;
     }
 
@@ -105,6 +107,7 @@ public class GameManager : MonoBehaviour
             //end recipe
             //select new recipe
             //show final result
+            FinishRecipe();
         }
         else //load next minigame
         {
