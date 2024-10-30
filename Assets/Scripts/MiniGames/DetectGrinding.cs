@@ -39,12 +39,12 @@ public class DetectGrinding : MonoBehaviour
 
     public void Grind()
     {
-        CheckForCombo();
+        ScoreManager.Instance.AddMultiplicateur(1);
         onGrind.Invoke();
         GrindIndex++;
         if (GrindIndex >= CurrentIngredientData.GrindedSpriteList.Count)
         {
-            ScoreManager.Instance.AddMultiplicateur(1);
+            CheckForCombo();
             GameManager.Instance.EndMiniGame();
             return;
         }
@@ -54,9 +54,9 @@ public class DetectGrinding : MonoBehaviour
 
     public void CheckForCombo()
     {
-        if (timerMulti < 1)
+        if (timerMulti < 10)
         {
-            ScoreManager.Instance.AddMultiplicateur(1);
+            ScoreManager.Instance.AddMultiplicateur(2);
         }
         else
         {
