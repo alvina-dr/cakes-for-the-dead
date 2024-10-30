@@ -15,9 +15,7 @@ public class AppearCutLines : MonoBehaviour
     private GameObject linePointInstantiated;
     public List<GameObject> allCutLines = new List<GameObject>();
     public List<GameObject> mouseLines = new List<GameObject>();
-    private Vector3 startCutPosition; //position qui sera instanci�e puis modifi�e pour avoir toute la ligne
-    private int lines = 0;
-
+    private Vector3 startCutPosition; 
     private Vector3 mousePosition;
 
     [SerializeField]
@@ -50,20 +48,21 @@ public class AppearCutLines : MonoBehaviour
     private void Lines()
     {
         float affine = Random.Range(-2.5f, 2.5f);
-        float x = -5;
+        float x = -4;
         int line = 0;
         startCutPosition = new Vector3(x, positionY(x, affine));
         float y = startCutPosition.y;
-        while (x < 5)
+        while (x < 4)
         {
             if (line > 3)
             {
                 x += .25f;
                 line = 0;
             }
-            if (positionY(x, affine) < 5 && positionY(x, affine) > -5)
+            if (positionY(x, affine) < 4 && positionY(x, affine) > -4)
             {
                 linePointInstantiated = Instantiate(cutLinePoint, new Vector3(x, positionY(x, affine)), Quaternion.identity, parentLines);
+                linePointInstantiated.transform.position = new Vector3 (linePointInstantiated.transform.position.x, linePointInstantiated.transform.position.y, -1);
                 allCutLines.Add(linePointInstantiated);
             }
             line++;
