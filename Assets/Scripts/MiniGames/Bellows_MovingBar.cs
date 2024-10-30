@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,9 @@ public class Bellows_MovingBar : MonoBehaviour
     public bool IsGoingRight = true;
     private float _leftMaxPosition;
     private float _rightMaxPosition;
-
+    [SerializeField] private SpriteRenderer _bellowsSpriteRenderer;
+    [SerializeField] private Sprite _bellowsOpen;
+    [SerializeField] private Sprite _bellowsClose;
     private void Start()
     {
         RectTransform rectTransform = GetComponent<RectTransform>();
@@ -32,6 +35,8 @@ public class Bellows_MovingBar : MonoBehaviour
 
     public void CheckCursorPosition()
     {
+        StartCoroutine(CloseBellows());
+
         float cursorWidth = MovingCursor.rectTransform.sizeDelta.x;
         float rightMovingCursor = MovingCursor.transform.position.x + cursorWidth / 2;
         float leftMovingCursor = MovingCursor.transform.position.x - cursorWidth / 2;
@@ -53,6 +58,13 @@ public class Bellows_MovingBar : MonoBehaviour
         }
 
         InvalidateCursorPosition();
+    }
+
+    private IEnumerator CloseBellows()
+    {
+        _bellowsSpriteRenderer.sprite = _bellowsClose;
+        yield return new WaitForSeconds(.5f);
+        _bellowsSpriteRenderer.sprite = _bellowsOpen;
     }
 
     public void ValidateCursorPosition()
