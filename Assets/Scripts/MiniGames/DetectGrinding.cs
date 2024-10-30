@@ -44,7 +44,7 @@ public class DetectGrinding : MonoBehaviour
         GrindIndex++;
         if (GrindIndex >= CurrentIngredientData.GrindedSpriteList.Count)
         {
-            Multiplicateur.Instance.AddMultiplicateur(1);
+            ScoreManager.Instance.AddMultiplicateur(1);
             GameManager.Instance.EndMiniGame();
             return;
         }
@@ -56,11 +56,11 @@ public class DetectGrinding : MonoBehaviour
     {
         if (timerMulti < 1)
         {
-            Multiplicateur.Instance.AddMultiplicateur(1);
+            ScoreManager.Instance.AddMultiplicateur(1);
         }
         else
         {
-            Multiplicateur.Instance.AddMultiplicateur(0);
+            ScoreManager.Instance.AddMultiplicateur(0);
         }
         timerMulti = 0;
     }

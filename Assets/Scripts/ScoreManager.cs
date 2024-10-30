@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class Multiplicateur : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
     #region Singleton
 
-    public static Multiplicateur Instance;
+    public static ScoreManager Instance;
 
     private void Awake()
     {
