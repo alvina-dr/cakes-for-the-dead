@@ -17,7 +17,7 @@ public class UI_Button : MonoBehaviour, ISelectHandler, IDeselectHandler, IPoint
     public void OnDeselect(BaseEventData eventData)
     {
         transform.DOScale(1f, .3f).SetUpdate(true);
-        _textMeshProUGUI.color = Color.black;
+        if (_textMeshProUGUI != null) _textMeshProUGUI.color = Color.black;
         if (_background != null) _background.gameObject.SetActive(false);
 
     }
@@ -25,7 +25,7 @@ public class UI_Button : MonoBehaviour, ISelectHandler, IDeselectHandler, IPoint
     public void OnSelect(BaseEventData eventData)
     {
         transform.DOScale(1.1f, .3f).SetUpdate(true);
-        _textMeshProUGUI.color = Color.white;
+        if (_textMeshProUGUI != null) _textMeshProUGUI.color = Color.white;
         if (_background != null) _background.gameObject.SetActive(true);
     }
 
