@@ -48,18 +48,18 @@ public class AppearCutLines : MonoBehaviour
     private void Lines()
     {
         float affine = Random.Range(-2.5f, 2.5f);
-        float x = -5;
+        float x = -4;
         int line = 0;
         startCutPosition = new Vector3(x, positionY(x, affine));
         float y = startCutPosition.y;
-        while (x < 5)
+        while (x < 4)
         {
             if (line > 3)
             {
                 x += .25f;
                 line = 0;
             }
-            if (positionY(x, affine) < 5 && positionY(x, affine) > -5)
+            if (positionY(x, affine) < 4 && positionY(x, affine) > -4)
             {
                 linePointInstantiated = Instantiate(cutLinePoint, new Vector3(x, positionY(x, affine)), Quaternion.identity, parentLines);
                 allCutLines.Add(linePointInstantiated);
