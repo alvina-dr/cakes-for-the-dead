@@ -581,6 +581,8 @@ MonoBehaviour:
   CurrentIngredientSprite: {fileID: 621503040}
   CurrentIngredientData: {fileID: 11400000, guid: 2f85fd818e861184ca051ff392152120, type: 2}
   GrindIndex: 0
+  shakeForce: 0.4
+  shakeDuration: 0.2
 --- !u!65 &1892185675
 BoxCollider:
   m_ObjectHideFlags: 0
