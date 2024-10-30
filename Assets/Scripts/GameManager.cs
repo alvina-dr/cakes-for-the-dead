@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     public bool IsFirstGameLaunched = false;
 
     [Header("Score")]
-    public int CurrentScore = 0;
+    public int TotalCurrentScore = 0;
 
     private void Start()
     {
@@ -116,5 +116,11 @@ public class GameManager : MonoBehaviour
         IsFirstGameLaunched = false;
         //show interface for end of day
         //check if enough score
+    }
+
+    public void AddToTotalScore(int score)
+    {
+        //here add small animation that indicates the score gained in the minigame
+        TotalCurrentScore += score;
     }
 }
