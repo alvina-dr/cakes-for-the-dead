@@ -17,6 +17,7 @@ public class UI_EndDay : MonoBehaviour
     public UI_ShowSizeAnimation ButtonNextDayAnimation;
     public UI_ShowSizeAnimation ButtonGameOverAnimation;
     public UI_ShowSizeAnimation EvictionNoticeAnimation;
+    public UI_ShowSizeAnimation ResultTitleAnimation;
     [SerializeField] private string _winTextFX;
     [SerializeField] private string _looseTextFX;
 
@@ -31,6 +32,8 @@ public class UI_EndDay : MonoBehaviour
         animation.AppendInterval(.3f);
         animation.AppendCallback(() => RentTicketAnimation.Show());
         animation.AppendInterval(.3f);
+        animation.AppendCallback(() => ResultTitleAnimation.Show());
+        animation.AppendInterval(.3f);
         animation.AppendCallback(() => CustomerCountAnimation.Show());
         animation.AppendInterval(.1f);
         animation.AppendCallback(() => CurrentMoneyAnimation.Show());
@@ -41,8 +44,8 @@ public class UI_EndDay : MonoBehaviour
 
         if (moneyLeft >= 0)
         {
-            //can continue + set text to green
             MoneyLeftText.GetComponent<TextMeshProUGUI>().color = Color.green;
+            ResultTitleAnimation.GetComponent<TextMeshProUGUI>().text = "<grow>Rent paid !";
             animation.AppendInterval(.1f);
             animation.AppendCallback(() => ButtonNextDayAnimation.Show());
             ScoreManager.Instance.TotalScore = moneyLeft;
@@ -50,9 +53,8 @@ public class UI_EndDay : MonoBehaviour
         }
         else
         {
-            //game over + set text to red
-            //make game over button instead
             MoneyLeftText.GetComponent<TextMeshProUGUI>().color = Color.red;
+            ResultTitleAnimation.GetComponent<TextMeshProUGUI>().text = "<grow>Evicted !";
             MoneyLeftText.SetTextValue(_looseTextFX + moneyLeft.ToString(), false);
             animation.AppendInterval(.1f);
             animation.AppendCallback(() => ButtonGameOverAnimation.Show());
