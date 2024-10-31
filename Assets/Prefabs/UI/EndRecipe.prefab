@@ -244,7 +244,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8255931931710769314}
-  - component: {fileID: 5999745627991955140}
   - component: {fileID: 3921723534677390705}
   - component: {fileID: 518452555084431374}
   - component: {fileID: 5375340190416021747}
@@ -274,20 +273,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5999745627991955140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4639130152379086390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b0c10f3ecc38d24d8ef7e74cefc03c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _showSize: 1
-  _showOnStart: 0
 --- !u!114 &3921723534677390705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,8 +490,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 262}
-  m_SizeDelta: {x: 1200, y: 100}
+  m_AnchoredPosition: {x: 0, y: 300}
+  m_SizeDelta: {x: 2000, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3041514557184820871
 CanvasRenderer:

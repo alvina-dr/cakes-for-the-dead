@@ -14,8 +14,8 @@ public class UI_EndRecipe : MonoBehaviour
     public void Open()
     {
         RecipeResultImage.sprite = GameManager.Instance.CurrentCustomerData.Recipe.CakeSprite;
-        ScoreTextValue.SetTextValue("+" + ScoreManager.Instance.scoreTempActuel.ToString());
-        CakeTitleText.SetTextValue("<grow>" + GameManager.Instance.CurrentCustomerData.Recipe.CakeName);
+        ScoreTextValue.SetTextValue("+" + ScoreManager.Instance.scoreTempActuel.ToString(), false);
+        CakeTitleText.SetTextValue("<grow>" + GameManager.Instance.CurrentCustomerData.Recipe.CakeName, false);
 
         Sequence animation = DOTween.Sequence();
         animation.AppendInterval(.3f);

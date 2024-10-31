@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8345199d4a1e404dac6ff00a3690756, type: 3}
   m_Name: RecipeData_Sad
   m_EditorClassIdentifier: 
-  CakeSprite: {fileID: 21300000, guid: adb0a712c25249d46a8d00671747fc76, type: 3}
+  CakeSprite: {fileID: 21300000, guid: b0401a5262886754f94d5dd29944a569, type: 3}
   CakeName: Freudenstrudel
   MiniGameList:
   - {fileID: 11400000, guid: 9b382d65d84cfb14ab74f7727ead7967, type: 2}
