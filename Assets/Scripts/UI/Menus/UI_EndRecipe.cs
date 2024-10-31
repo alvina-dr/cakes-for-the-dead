@@ -13,15 +13,21 @@ public class UI_EndRecipe : MonoBehaviour
     public void Open()
     {
         RecipeResultImage.sprite = GameManager.Instance.CurrentRecipeData.CakeSprite;
-        //ScoreTextValue = 
+        ScoreTextValue.SetTextValue("+" + ScoreManager.Instance.scoreTempActuel.ToString());
         
         Sequence animation = DOTween.Sequence();
-        animation.AppendInterval(1.0f);
+        animation.AppendInterval(.3f);
         animation.AppendCallback(() => RecipeResultImageAnimation.Show());
-        animation.AppendInterval(1.0f);
+        animation.AppendInterval(.3f);
         animation.AppendCallback(() => ScoreTextAnimation.Show());
-        animation.AppendInterval(1.0f);
+        animation.AppendInterval(.3f);
         animation.AppendCallback(() => CloseButtonAnimation.Show());
+        animation.AppendInterval(.3f);
+        animation.AppendCallback(() =>
+        {
+            ScoreManager.Instance.TotalScore += ScoreManager.Instance.scoreTempActuel;
+            GameManager.Instance.UIManager.ScoreUI.SetTextValue(ScoreManager.Instance.TotalScore.ToString());
+        });
     }
 
     public void Close()

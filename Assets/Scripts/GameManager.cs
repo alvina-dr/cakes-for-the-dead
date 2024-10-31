@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
 
         Timer = GeneralData.DayDuration;
         UIManager.TimerUI.SetTextValue(Mathf.RoundToInt(Timer).ToString());
+        UIManager.ScoreUI.SetTextValue(ScoreManager.Instance.TotalScore.ToString());
 
         LaunchGame();
     }
@@ -104,6 +105,7 @@ public class GameManager : MonoBehaviour
     //Called by button Close in menu EndRecipe
     public void CloseEndRecipe()
     {
+        ScoreManager.Instance.NumberOfCustomerDay++;
         UIManager.UI_EndRecipe.Close();
         DOVirtual.DelayedCall(.5f, () =>
         {
@@ -166,6 +168,7 @@ public class GameManager : MonoBehaviour
 
     public void StartDay()
     {
+        ScoreManager.Instance.NumberOfCustomerDay = 0;
         UIManager.StartDay.Hide();
         NextCommand();
     }

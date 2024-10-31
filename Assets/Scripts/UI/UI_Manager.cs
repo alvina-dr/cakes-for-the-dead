@@ -12,5 +12,4 @@ public class UI_Manager : MonoBehaviour
     public UI_NewCommand NewCommand;
     public UI_EndDay EndDayScene;
     public UI_EndRecipe UI_EndRecipe;
-
 }

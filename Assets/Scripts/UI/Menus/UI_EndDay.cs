@@ -17,7 +17,8 @@ public class UI_EndDay : MonoBehaviour
 
     public void Open()
     {
-        //CustomerCountText = 
+        CustomerCountText.SetTextValue(ScoreManager.Instance.NumberOfCustomerDay.ToString(), false);
+        CurrentMoneyText.SetTextValue(ScoreManager.Instance.TotalScore.ToString(), false);
 
         Sequence animation = DOTween.Sequence();
         animation.AppendInterval(.3f);

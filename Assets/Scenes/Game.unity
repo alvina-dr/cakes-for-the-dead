@@ -3120,8 +3120,6 @@ RectTransform:
   - {fileID: 1630894780}
   - {fileID: 1028135087}
   - {fileID: 199454632}
-  - {fileID: 347631508}
-  - {fileID: 130038988}
   - {fileID: 2033858901}
   - {fileID: 1997777620}
   m_Father: {fileID: 0}
@@ -3779,7 +3777,7 @@ GameObject:
   - component: {fileID: 1956201150}
   - component: {fileID: 1956201149}
   m_Layer: 0
-  m_Name: Score Manager
+  m_Name: ScoreManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3798,6 +3796,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiActuel: 0
+  scoreTempActuel: 0
+  TotalScore: 0
+  NumberOfCustomerDay: 0
   scoreText: {fileID: 1997777621}
   multitext: {fileID: 2033858902}
 --- !u!4 &1956201150

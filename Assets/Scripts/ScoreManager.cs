@@ -22,6 +22,8 @@ public class ScoreManager : MonoBehaviour
     #endregion
     public int multiActuel;
     public int scoreTempActuel;
+    public int TotalScore;
+    public int NumberOfCustomerDay;
     public TMP_Text scoreText;
     public TMP_Text multitext;
 
