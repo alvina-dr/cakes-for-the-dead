@@ -50,7 +50,8 @@ public class DetectGrinding : MonoBehaviour
     public void Grind()
     {
         ScoreManager.Instance.AddMultiplicateur(1);
-        
+
+        AudioManager.Instance.onGrind.Invoke();
         GrindIndex++;
 
         if (GrindIndex == CurrentIngredientData.GrindedSpriteList.Count)
@@ -59,6 +60,7 @@ public class DetectGrinding : MonoBehaviour
             CheckForCombo();
             CheckForScore();
             grindParticleSsystem.GetComponent<Renderer>().material = sparkMat;
+            AudioManager.Instance.onPerfect.Invoke();
             ScoreManager.Instance.scoreTempActuel = Mathf.CeilToInt(scoreTotal);
             Pestle.Hide(() => Destroy(Pestle.gameObject));
             StartCoroutine(EndMiniGameAnimation());

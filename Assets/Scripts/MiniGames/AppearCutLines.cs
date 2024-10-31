@@ -124,6 +124,19 @@ public class AppearCutLines : MonoBehaviour
         }
         if (gameStarted && isPressed && Input.GetMouseButtonUp(0))
         {
+            switch (linesLeft)
+            {
+                case 2:
+                    AudioManager.Instance.onCut.Invoke();
+                    break;
+                case 1:
+                    AudioManager.Instance.onCut2.Invoke();
+                    break;
+                case 0:
+                    AudioManager.Instance.onCut3.Invoke();
+                    break;
+            }
+
             isPressed = false;
 
             float scoreCut = 0;
