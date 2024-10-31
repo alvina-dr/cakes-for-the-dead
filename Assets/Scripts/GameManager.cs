@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     public UI_Manager UIManager;
 
-    public List<RecipeData> RecipeDataList = new List<RecipeData>();
-    public RecipeData CurrentRecipeData;
+    public List<CustomerData> RecipeDataList = new List<CustomerData>();
+    public CustomerData CurrentCustomerData;
     public int CurrentRecipeMiniGameIndex = 0;
     public float Timer = 0;
     public bool IsFirstGameLaunched = false;
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         RecipeDataList.Clear();
-        RecipeData[] recipeDataArray = Resources.LoadAll<RecipeData>("RecipeData");
+        CustomerData[] recipeDataArray = Resources.LoadAll<CustomerData>("CustomerData");
         for (int i = 0; i < recipeDataArray.Length; i++)
         {
             RecipeDataList.Add(recipeDataArray[i]);
@@ -73,19 +73,19 @@ public class GameManager : MonoBehaviour
 
     public void LaunchGame()
     {
-        if (CurrentRecipeData == null) SelectRandomRecipe();
+        if (CurrentCustomerData == null) SelectRandomRecipe();
     }
 
     public void SelectRandomRecipe()
     {
-        CurrentRecipeData = RecipeDataList[Random.Range(0, RecipeDataList.Count)];
+        CurrentCustomerData = RecipeDataList[Random.Range(0, RecipeDataList.Count)];
     }
 
     public void LaunchRecipe()
     {
         IsFirstGameLaunched = true;
         IsPlayerMakingRecipe = true;
-        if (CurrentRecipeData == null)
+        if (CurrentCustomerData == null)
         {
             Debug.LogError("NO CURRENT RECIPE SELECTED");
             return;
@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
     {
         ScoreManager.Instance.NumberOfCustomerDay++;
         UIManager.UI_EndRecipe.Close();
-        CurrentRecipeData = null;
+        CurrentCustomerData = null;
         DOVirtual.DelayedCall(.5f, () =>
         {
             if (Timer <= 0)
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
 
     public void NextCommand()
     {
-        if (CurrentRecipeData == null) SelectRandomRecipe();
+        if (CurrentCustomerData == null) SelectRandomRecipe();
         UIManager.NewCommand.gameObject.SetActive(true);
         UIManager.NewCommand.Open();
     }
@@ -137,15 +137,15 @@ public class GameManager : MonoBehaviour
 
     public MiniGameData GetCurrentMiniGame()
     {
-        if (CurrentRecipeData == null) return null;
-        return CurrentRecipeData.MiniGameList[CurrentRecipeMiniGameIndex];
+        if (CurrentCustomerData == null) return null;
+        return CurrentCustomerData.Recipe.MiniGameList[CurrentRecipeMiniGameIndex];
     }
 
     public void EndMiniGame()
     {
         SceneManager.UnloadSceneAsync(GetCurrentMiniGame().MiniGameLevelName);
         CurrentRecipeMiniGameIndex++;
-        if (CurrentRecipeMiniGameIndex >= CurrentRecipeData.MiniGameList.Count) //end recipe
+        if (CurrentRecipeMiniGameIndex >= CurrentCustomerData.Recipe.MiniGameList.Count) //end recipe
         {
             FinishRecipe();
         }

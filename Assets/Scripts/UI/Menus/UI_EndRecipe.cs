@@ -12,7 +12,7 @@ public class UI_EndRecipe : MonoBehaviour
 
     public void Open()
     {
-        RecipeResultImage.sprite = GameManager.Instance.CurrentRecipeData.CakeSprite;
+        RecipeResultImage.sprite = GameManager.Instance.CurrentCustomerData.Recipe.CakeSprite;
         ScoreTextValue.SetTextValue("+" + ScoreManager.Instance.scoreTempActuel.ToString());
         
         Sequence animation = DOTween.Sequence();
