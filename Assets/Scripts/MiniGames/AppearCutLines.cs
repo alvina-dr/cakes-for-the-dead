@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class AppearCutLines : MonoBehaviour
@@ -31,6 +32,7 @@ public class AppearCutLines : MonoBehaviour
     private int linesLeft = 3;
     private int scoreTotal;
 
+    public UnityEvent onCut = new UnityEvent();
     private void Start()
     {
     }
