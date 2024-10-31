@@ -114,8 +114,8 @@ public class AppearCutLines : MonoBehaviour
         if (gameStarted && Input.GetMouseButtonDown(0))
         {
             isPressed = true;
-            trail.enabled = true;
-            trail.transform.position = new Vector3(mousePosition.x, mousePosition.y, -1);
+            //trail.enabled = true;
+            //trail.transform.position = new Vector3(mousePosition.x, mousePosition.y, -1);
         }
         if (gameStarted && isPressed && Input.GetMouseButton(0))
         {
@@ -208,7 +208,7 @@ public class AppearCutLines : MonoBehaviour
             #endregion
             DestroyLines();
             gameStarted = false;
-            trail.enabled = false;
+            //trail.enabled = false;
         }
     }
 }
