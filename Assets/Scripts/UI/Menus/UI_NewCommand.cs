@@ -1,12 +1,13 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using TMPEffects;
+using UnityEngine.UI;
 using TMPEffects.Components;
 
 public class UI_NewCommand : MonoBehaviour
 {
     [SerializeField] private UI_ShowSizeAnimation _characterAnimation;
+    [SerializeField] private Image _characterImage;
     [SerializeField] private UI_ShowSizeAnimation _dialogAnimation;
     [SerializeField] private UI_ShowSizeAnimation _buttonAnimation;
     [SerializeField] private TextMeshProUGUI _dialogText;
@@ -15,6 +16,7 @@ public class UI_NewCommand : MonoBehaviour
     public void Open()
     {
         _dialogText.text = GameManager.Instance.CurrentCustomerData.Dialog;
+        _characterImage.color = GameManager.Instance.CurrentCustomerData.CustomerSpriteColor;
         Sequence animation = DOTween.Sequence();
         animation.AppendInterval(.3f);
         animation.AppendCallback(() => _characterAnimation.Show());

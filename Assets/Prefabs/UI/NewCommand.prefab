@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterAnimation: {fileID: 6771565824085272067}
+  _characterImage: {fileID: 5868314399120532425}
   _dialogAnimation: {fileID: 9042462295757866218}
   _buttonAnimation: {fileID: 4475132013057645704}
   _dialogText: {fileID: 4289838732228028368}

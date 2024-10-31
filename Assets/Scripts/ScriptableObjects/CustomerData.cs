@@ -6,4 +6,5 @@ public class CustomerData : ScriptableObject
     public RecipeData Recipe;
     [TextArea]
     public string Dialog;
+    public Color CustomerSpriteColor;
 }

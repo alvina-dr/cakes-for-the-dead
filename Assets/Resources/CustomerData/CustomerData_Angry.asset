@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Recipe: {fileID: 11400000, guid: 15ff68a0a5bfd224a88e8c6c6615759e, type: 2}
   Dialog: grR ! what's this life about ? Wandering around ??? *hurls*
+  CustomerSpriteColor: {r: 1, g: 0.2448838, b: 0, a: 1}

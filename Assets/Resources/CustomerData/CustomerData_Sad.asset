@@ -15,3 +15,4 @@ MonoBehaviour:
   Recipe: {fileID: 11400000, guid: 64e4b76f020b3314fa932ee4b92a1fc2, type: 2}
   Dialog: You might not tell due to my radiating smile and pleasant tone, but I'm
     MISERABLLLLLEE *cries*
+  CustomerSpriteColor: {r: 0, g: 0.7799364, b: 0.90188676, a: 1}
