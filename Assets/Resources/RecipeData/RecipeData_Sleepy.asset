@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: RecipeData_Sleepy
   m_EditorClassIdentifier: 
   CakeSprite: {fileID: 21300000, guid: adb0a712c25249d46a8d00671747fc76, type: 3}
-  CakeName: Sadness
+  CakeName: Cakeaine
   MiniGameList:
   - {fileID: 11400000, guid: 8def2e1aaed79e8438500fa83868a144, type: 2}
+  - {fileID: 11400000, guid: 9b382d65d84cfb14ab74f7727ead7967, type: 2}
   - {fileID: 11400000, guid: fa513d4d15e8e58499444639ff7bfbae, type: 2}

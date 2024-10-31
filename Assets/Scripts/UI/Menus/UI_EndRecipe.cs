@@ -9,15 +9,19 @@ public class UI_EndRecipe : MonoBehaviour
     public UI_ShowSizeAnimation RecipeResultImageAnimation;
     public Image RecipeResultImage;
     public UI_ShowSizeAnimation CloseButtonAnimation;
-
+    public UI_ShowSizeAnimation CakeTitleAnimation;
+    public UI_TextValue CakeTitleText;
     public void Open()
     {
         RecipeResultImage.sprite = GameManager.Instance.CurrentCustomerData.Recipe.CakeSprite;
         ScoreTextValue.SetTextValue("+" + ScoreManager.Instance.scoreTempActuel.ToString());
-        
+        CakeTitleText.SetTextValue("<grow>" + GameManager.Instance.CurrentCustomerData.Recipe.CakeName);
+
         Sequence animation = DOTween.Sequence();
         animation.AppendInterval(.3f);
         animation.AppendCallback(() => RecipeResultImageAnimation.Show());
+        animation.AppendInterval(.3f);
+        animation.AppendCallback(() => CakeTitleAnimation.Show());
         animation.AppendInterval(.3f);
         animation.AppendCallback(() => ScoreTextAnimation.Show());
         animation.AppendInterval(.3f);
