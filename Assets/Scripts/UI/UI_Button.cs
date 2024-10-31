@@ -43,4 +43,9 @@ public class UI_Button : MonoBehaviour, ISelectHandler, IDeselectHandler, IPoint
     {
         OnDeselect(eventData);
     }
+
+    private void OnDestroy()
+    {
+        transform.DOKill();
+    }
 }

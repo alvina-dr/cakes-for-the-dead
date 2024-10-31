@@ -5473,6 +5473,8 @@ MonoBehaviour:
         m_CallState: 2
   timerMulti: 0
   finalScoreTweaker: 0
+  sparkMat: {fileID: 2100000, guid: c73ca56c42bc64c419c14ae054ce36db, type: 2}
+  grindParticleSsystem: {fileID: 1179475598}
 --- !u!65 &1892185675
 BoxCollider:
   m_ObjectHideFlags: 0

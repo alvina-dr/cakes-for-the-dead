@@ -182,4 +182,9 @@ public class GameManager : MonoBehaviour
         UIManager.EndDayScene.gameObject.SetActive(true);
         UIManager.EndDayScene.Open();
     }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
