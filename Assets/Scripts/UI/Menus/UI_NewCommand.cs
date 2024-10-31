@@ -44,6 +44,7 @@ public class UI_NewCommand : MonoBehaviour
     public void Hide()
     {
         AudioManager.Instance.onVoiceOff.Invoke();
+        
         _characterAnimation.Hide();
         _dialogAnimation.Hide();
         _buttonAnimation.Hide(() => gameObject.SetActive(false));
