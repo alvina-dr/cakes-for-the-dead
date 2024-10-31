@@ -17,6 +17,19 @@ public class UI_NewCommand : MonoBehaviour
     {
         _dialogText.text = GameManager.Instance.CurrentCustomerData.Dialog;
         _characterImage.color = GameManager.Instance.CurrentCustomerData.CustomerSpriteColor;
+        int rand = Random.Range(0,3);
+        switch (rand)
+        {
+            case 0:
+                AudioManager.Instance.onVoice1.Invoke();
+                break;
+            case 1:
+                AudioManager.Instance.onVoice2.Invoke();
+                break;
+            case 2:
+                AudioManager.Instance.onVoice3.Invoke();
+                break;
+        }
         Sequence animation = DOTween.Sequence();
         animation.AppendInterval(.3f);
         animation.AppendCallback(() => _characterAnimation.Show());
@@ -30,6 +43,7 @@ public class UI_NewCommand : MonoBehaviour
 
     public void Hide()
     {
+        AudioManager.Instance.onVoiceOff.Invoke();
         _characterAnimation.Hide();
         _dialogAnimation.Hide();
         _buttonAnimation.Hide(() => gameObject.SetActive(false));

@@ -21,27 +21,16 @@ public class Pour_Mold : MonoBehaviour
             fullnessIndex++;
             _fullnessIndicator.text = fullnessIndex.ToString();
 
-            if (fullnessIndex == 50)
+            if (fullnessIndex == 60)
             {
-                ScoreManager.Instance.scoreTempActuel += 75;
+                ScoreManager.Instance.scoreTempActuel += 100;
                 AudioManager.Instance.onPerfect.Invoke();
                 ScoreManager.Instance.AddMultiplicateur(1);
             }
-            if (fullnessIndex >= 55 && denies < 1)
-            {
-                ScoreManager.Instance.scoreTempActuel -= 25;
-                denies++;
-            }
-            if (fullnessIndex >= 75 && denies < 2)
-            {
-                ScoreManager.Instance.scoreTempActuel -= 25;
-                ScoreManager.Instance.ResetMultiplicateur();
-                denies++;
-            }
             if (fullnessIndex == 125)
             {   
-                ScoreManager.Instance.scoreTempActuel += 1000;
-                ScoreManager.Instance.AddMultiplicateur(20);
+                ScoreManager.Instance.scoreTempActuel += 200;
+                ScoreManager.Instance.AddMultiplicateur(3);
             }
         }
     }

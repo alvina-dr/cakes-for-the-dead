@@ -114,8 +114,8 @@ public class AppearCutLines : MonoBehaviour
         if (gameStarted && Input.GetMouseButtonDown(0))
         {
             isPressed = true;
-            trail.enabled = true;
-            trail.transform.position = new Vector3(mousePosition.x, mousePosition.y, -1);
+            //trail.enabled = true;
+            //trail.transform.position = new Vector3(mousePosition.x, mousePosition.y, -1);
         }
         if (gameStarted && isPressed && Input.GetMouseButton(0))
         {
@@ -183,24 +183,28 @@ public class AppearCutLines : MonoBehaviour
             else if (scoreCut > 75 && scoreCut < 90)
             {
                 ScoreManager.Instance.AddMultiplicateur(1);
+                AudioManager.Instance.onPerfect.Invoke();
             }
             else if (scoreCut > 90)
             {
                 ScoreManager.Instance.AddMultiplicateur(3);
+                AudioManager.Instance.onPerfect.Invoke();
             }
 
 
-            if (scoreTotal < 100)
+            if (scoreTotal < 50)
             {
                 ScoreManager.Instance.ResetMultiplicateur();
             }
             else if (scoreTotal > 275)
             {
                 ScoreManager.Instance.AddMultiplicateur(2);
+                AudioManager.Instance.onPerfect.Invoke();
             }
             else if (scoreTotal > 300)
             {
                 ScoreManager.Instance.AddMultiplicateur(6);
+                AudioManager.Instance.onPerfect.Invoke();
             }
 
 
@@ -208,7 +212,7 @@ public class AppearCutLines : MonoBehaviour
             #endregion
             DestroyLines();
             gameStarted = false;
-            trail.enabled = false;
+            //trail.enabled = false;
         }
     }
 }

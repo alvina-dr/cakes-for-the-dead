@@ -33,4 +33,8 @@ public class AudioManager : MonoBehaviour
     public UnityEvent onPourOff = new UnityEvent();
     public UnityEvent onFireOn = new UnityEvent();
     public UnityEvent onFireOff = new UnityEvent();
+    public UnityEvent onVoice1 = new UnityEvent();
+    public UnityEvent onVoice2 = new UnityEvent();
+    public UnityEvent onVoice3 = new UnityEvent();
+    public UnityEvent onVoiceOff = new UnityEvent();
 }
