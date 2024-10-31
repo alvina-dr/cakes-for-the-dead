@@ -23,6 +23,8 @@ public class Pour_CheckBucket : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         if (GameManager.Instance != null)
         {
+
+            ScoreManager.Instance.CalculScore();
             GameManager.Instance.EndMiniGame();
         }
     }

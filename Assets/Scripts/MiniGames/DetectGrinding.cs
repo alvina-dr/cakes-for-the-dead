@@ -61,6 +61,8 @@ public class DetectGrinding : MonoBehaviour
             grindParticleSsystem.GetComponent<ParticleSystemRenderer>().material = sparkMat;
             ScoreManager.Instance.scoreTempActuel = Mathf.CeilToInt(scoreTotal);
             Pestle.Hide(() => Destroy(Pestle.gameObject));
+
+            ScoreManager.Instance.CalculScore();
             StartCoroutine(EndMiniGameAnimation());
         }
         onGrind.Invoke();

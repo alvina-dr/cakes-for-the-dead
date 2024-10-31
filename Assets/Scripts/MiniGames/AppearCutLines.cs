@@ -126,6 +126,7 @@ public class AppearCutLines : MonoBehaviour
         }
         if (gameStarted && isPressed && Input.GetMouseButtonUp(0))
         {
+            onCut.Invoke();
             switch (linesLeft)
             {
                 case 2:
@@ -209,8 +210,13 @@ public class AppearCutLines : MonoBehaviour
                 AudioManager.Instance.onPerfect.Invoke();
             }
 
-
             ScoreManager.Instance.scoreTempActuel += scoreTotal;
+
+            if (linesLeft == 0)
+            {
+                ScoreManager.Instance.CalculScore();
+            }
+
             #endregion
             DestroyLines();
             gameStarted = false;

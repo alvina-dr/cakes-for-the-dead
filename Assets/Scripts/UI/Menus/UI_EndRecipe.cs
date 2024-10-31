@@ -14,7 +14,7 @@ public class UI_EndRecipe : MonoBehaviour
     public void Open()
     {
         RecipeResultImage.sprite = GameManager.Instance.CurrentCustomerData.Recipe.CakeSprite;
-        ScoreTextValue.SetTextValue("+" + ScoreManager.Instance.scoreTempActuel.ToString());
+        ScoreTextValue.SetTextValue("+" + ScoreManager.Instance.scoreRecetteEnCours.ToString());
         CakeTitleText.SetTextValue("<grow>" + GameManager.Instance.CurrentCustomerData.Recipe.CakeName);
 
         Sequence animation = DOTween.Sequence();
@@ -29,7 +29,7 @@ public class UI_EndRecipe : MonoBehaviour
         animation.AppendInterval(.3f);
         animation.AppendCallback(() =>
         {
-            ScoreManager.Instance.TotalScore += ScoreManager.Instance.scoreTempActuel;
+            ScoreManager.Instance.TotalScore += ScoreManager.Instance.scoreRecetteEnCours;
             GameManager.Instance.UIManager.ScoreUI.SetTextValue(ScoreManager.Instance.TotalScore.ToString());
         });
     }
