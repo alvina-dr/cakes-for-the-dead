@@ -29,6 +29,10 @@ public class AppearCutLines : MonoBehaviour
     private int linesLeft = 3;
     private int scoreTotal;
 
+    private void Start()
+    {
+    }
+
     void Update()
     {
         if (!makeAppearLines && !gameStarted && linesLeft > 0)
@@ -180,6 +184,9 @@ public class AppearCutLines : MonoBehaviour
             {
                 ScoreManager.Instance.AddMultiplicateur(6);
             }
+
+
+            ScoreManager.Instance.scoreTempActuel += scoreTotal;
             #endregion
             DestroyLines();
             gameStarted = false;

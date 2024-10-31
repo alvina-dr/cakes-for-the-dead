@@ -3384,6 +3384,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiActuel: 0
+  scoreText: {fileID: 1997777621}
+  multitext: {fileID: 2033858902}
 --- !u!4 &1956201150
 Transform:
   m_ObjectHideFlags: 0

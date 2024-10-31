@@ -14,18 +14,21 @@ public class DetectGrinding : MonoBehaviour
     private float shakeForce;
     [SerializeField]
     private float shakeDuration;
+    private float scoreTotal;
 
     public UnityEvent onGrind = new UnityEvent();
 
     [SerializeField]
     private float timerMulti;
+    [SerializeField]
+    private float finalScoreTweaker;
 
     private void Start()
     {
         mainCamera = Camera.main;
         CurrentIngredientSprite.sprite = CurrentIngredientData.GrindedSpriteList[0];
     }
-   
+
     private void Update()
     {
         timerMulti += Time.deltaTime;
@@ -45,10 +48,12 @@ public class DetectGrinding : MonoBehaviour
         if (GrindIndex >= CurrentIngredientData.GrindedSpriteList.Count)
         {
             CheckForCombo();
+            CheckForScore();
+            ScoreManager.Instance.scoreTempActuel = Mathf.CeilToInt(scoreTotal);
             GameManager.Instance.EndMiniGame();
             return;
         }
-        
+
         CurrentIngredientSprite.sprite = CurrentIngredientData.GrindedSpriteList[GrindIndex];
     }
 
@@ -63,5 +68,10 @@ public class DetectGrinding : MonoBehaviour
             ScoreManager.Instance.AddMultiplicateur(0);
         }
         timerMulti = 0;
+    }
+
+    private void CheckForScore()
+    {
+        scoreTotal = (100 - timerMulti) * finalScoreTweaker;
     }
 }
