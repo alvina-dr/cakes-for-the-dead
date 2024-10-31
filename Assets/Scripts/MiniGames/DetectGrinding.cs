@@ -14,18 +14,21 @@ public class DetectGrinding : MonoBehaviour
     private float shakeForce;
     [SerializeField]
     private float shakeDuration;
+    private float scoreTotal;
 
     public UnityEvent onGrind = new UnityEvent();
 
     [SerializeField]
     private float timerMulti;
+    [SerializeField]
+    private float finalScoreTweaker;
 
     private void Start()
     {
         mainCamera = Camera.main;
         CurrentIngredientSprite.sprite = CurrentIngredientData.GrindedSpriteList[0];
     }
-   
+
     private void Update()
     {
         timerMulti += Time.deltaTime;
@@ -39,29 +42,36 @@ public class DetectGrinding : MonoBehaviour
 
     public void Grind()
     {
-        CheckForCombo();
+        ScoreManager.Instance.AddMultiplicateur(1);
         onGrind.Invoke();
         GrindIndex++;
         if (GrindIndex >= CurrentIngredientData.GrindedSpriteList.Count)
         {
-            ScoreManager.Instance.AddMultiplicateur(1);
+            CheckForCombo();
+            CheckForScore();
+            ScoreManager.Instance.scoreTempActuel = Mathf.CeilToInt(scoreTotal);
             GameManager.Instance.EndMiniGame();
             return;
         }
-        
+
         CurrentIngredientSprite.sprite = CurrentIngredientData.GrindedSpriteList[GrindIndex];
     }
 
     public void CheckForCombo()
     {
-        if (timerMulti < 1)
+        if (timerMulti < 10)
         {
-            ScoreManager.Instance.AddMultiplicateur(1);
+            ScoreManager.Instance.AddMultiplicateur(2);
         }
         else
         {
             ScoreManager.Instance.AddMultiplicateur(0);
         }
         timerMulti = 0;
+    }
+
+    private void CheckForScore()
+    {
+        scoreTotal = (100 - timerMulti) * finalScoreTweaker;
     }
 }

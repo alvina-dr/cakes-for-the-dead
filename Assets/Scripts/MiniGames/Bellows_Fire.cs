@@ -9,6 +9,7 @@ public class Bellows_Fire : MonoBehaviour
     public int FireStrength;
     public float CookingDuration;
     public float CookingCurrentTime;
+    private float scoreTotal;
     public UI_SliderValue TimerSlider;
     public UnityEvent onFireUp = new UnityEvent();
     public UnityEvent onFireDown = new UnityEvent();
@@ -17,11 +18,13 @@ public class Bellows_Fire : MonoBehaviour
 
     private void Start()
     {
+        scoreTotal = 0;
         SetFireSprite();
     }
 
     private void Update()
     {
+        ScoreManager.Instance.scoreTempActuel = Mathf.CeilToInt(scoreTotal);
         CookingCurrentTime += Time.deltaTime * (FireStrength);
         TimerSlider.SetBarValue(CookingCurrentTime, CookingDuration);
         if (CookingCurrentTime > CookingDuration)
@@ -39,6 +42,7 @@ public class Bellows_Fire : MonoBehaviour
         onPerfectSoufflet.Invoke();
         onSouffletWind.Invoke();
         ScoreManager.Instance.AddMultiplicateur(1);
+        scoreTotal += 100;
     }
 
     public void ResetFireStrength()
@@ -48,6 +52,7 @@ public class Bellows_Fire : MonoBehaviour
         onFireDown.Invoke();
         onSouffletWind.Invoke();
         ScoreManager.Instance.RemoveMultiplicateur(1);
+        scoreTotal -= 50;
     }
 
     public void SetFireSprite()
