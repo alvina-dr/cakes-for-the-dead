@@ -1,4 +1,5 @@
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,10 @@ public class UI_EndDay : MonoBehaviour
     public UI_ShowSizeAnimation MoneyLeftAnimation;
     public UI_TextValue MoneyLeftText;
     public UI_ShowSizeAnimation ButtonNextDayAnimation;
+    public UI_ShowSizeAnimation ButtonGameOverAnimation;
+    public UI_ShowSizeAnimation EvictionNoticeAnimation;
+    [SerializeField] private string _winTextFX;
+    [SerializeField] private string _looseTextFX;
 
     public void Open()
     {
@@ -21,7 +26,6 @@ public class UI_EndDay : MonoBehaviour
         CurrentMoneyText.SetTextValue(ScoreManager.Instance.TotalScore.ToString(), false);
         RentValueText.SetTextValue(GameManager.Instance.RentDue.ToString(), false);
         int moneyLeft = ScoreManager.Instance.TotalScore - GameManager.Instance.RentDue;
-        MoneyLeftText.SetTextValue(moneyLeft.ToString(), false);
 
         Sequence animation = DOTween.Sequence();
         animation.AppendInterval(.3f);
@@ -38,16 +42,22 @@ public class UI_EndDay : MonoBehaviour
         if (moneyLeft >= 0)
         {
             //can continue + set text to green
+            MoneyLeftText.GetComponent<TextMeshProUGUI>().color = Color.green;
             animation.AppendInterval(.1f);
             animation.AppendCallback(() => ButtonNextDayAnimation.Show());
             ScoreManager.Instance.TotalScore = moneyLeft;
-        } 
+            MoneyLeftText.SetTextValue(_winTextFX + moneyLeft.ToString(), false);
+        }
         else
         {
             //game over + set text to red
             //make game over button instead
+            MoneyLeftText.GetComponent<TextMeshProUGUI>().color = Color.red;
+            MoneyLeftText.SetTextValue(_looseTextFX + moneyLeft.ToString(), false);
             animation.AppendInterval(.1f);
-            animation.AppendCallback(() => ButtonNextDayAnimation.Show());
+            animation.AppendCallback(() => ButtonGameOverAnimation.Show());
+            animation.AppendInterval(.5f);
+            animation.AppendCallback(() => EvictionNoticeAnimation.Show());
         }
     }
 

@@ -5192,6 +5192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e22875e622c37c94796bf917ba8c9d25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteSizeAnimation: {fileID: 1560917113}
+  _inHandSize: 1.1
 --- !u!65 &1236931510
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5265,7 +5267,7 @@ GameObject:
   - component: {fileID: 1560917111}
   - component: {fileID: 1560917113}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5471,6 +5473,8 @@ MonoBehaviour:
         m_CallState: 2
   timerMulti: 0
   finalScoreTweaker: 0
+  sparkMat: {fileID: 2100000, guid: c73ca56c42bc64c419c14ae054ce36db, type: 2}
+  grindParticleSsystem: {fileID: 1179475598}
 --- !u!65 &1892185675
 BoxCollider:
   m_ObjectHideFlags: 0

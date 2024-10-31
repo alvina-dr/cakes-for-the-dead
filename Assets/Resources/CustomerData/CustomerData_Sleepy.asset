@@ -15,3 +15,4 @@ MonoBehaviour:
   Recipe: {fileID: 11400000, guid: 98e29a58d5bfaa04b8bf43e62bdaf26e, type: 2}
   Dialog: '*Zzz...zz*  wha- I''m up <wave>I''m up</wave> ! ahem.. yeah, so... I''ve
     been feeling a bit lethargic lately... '
+  CustomerSpriteColor: {r: 0.28231466, g: 0, b: 0.6603774, a: 1}

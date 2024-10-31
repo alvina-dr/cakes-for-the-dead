@@ -15,3 +15,4 @@ MonoBehaviour:
   Recipe: {fileID: 11400000, guid: 0e3cbac62f868d24ca6c42b1f52a5228, type: 2}
   Dialog: Ptteh...*Drools* Hi ! hum.. sorry for the mess, my ectoplasm has been melting
     all over town !
+  CustomerSpriteColor: {r: 0, g: 0.85660374, b: 0.2611106, a: 1}
