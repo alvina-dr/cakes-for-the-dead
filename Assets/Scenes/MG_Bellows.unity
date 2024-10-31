@@ -127,6 +127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 185233006}
+  - component: {fileID: 185233008}
   - component: {fileID: 185233007}
   m_Layer: 0
   m_Name: Sprite
@@ -205,6 +206,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &185233008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185233005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b257c5bc5c9fda64da9908003a354eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 0, z: 20}
+  _animationDuration: 0.1
 --- !u!1 &205318257
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,7 +528,7 @@ GameObject:
   - component: {fileID: 452398964}
   - component: {fileID: 452398963}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: FireIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -599,7 +614,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 598441444}
-  - component: {fileID: 598441445}
+  - component: {fileID: 598441446}
   m_Layer: 0
   m_Name: Flame
   m_TagString: Untagged
@@ -623,7 +638,7 @@ Transform:
   - {fileID: 185233006}
   m_Father: {fileID: 1187134014}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &598441445
+--- !u!114 &598441446
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -632,11 +647,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 598441443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b257c5bc5c9fda64da9908003a354eb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b0c10f3ecc38d24d8ef7e74cefc03c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotation: {x: 0, y: 0, z: 20}
-  _animationDuration: 0.1
+  _showSize: 1
+  _showOnStart: 1
 --- !u!1 &636211170
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,6 +950,7 @@ GameObject:
   m_Component:
   - component: {fileID: 961501781}
   - component: {fileID: 961501783}
+  - component: {fileID: 961501784}
   m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
@@ -970,6 +986,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961501780}
   m_CullTransparentMesh: 1
+--- !u!114 &961501784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961501780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0c10f3ecc38d24d8ef7e74cefc03c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showSize: 1
+  _showOnStart: 1
 --- !u!1 &1057259029
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,7 +1009,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1057259030}
-  - component: {fileID: 1057259031}
+  - component: {fileID: 1057259032}
   m_Layer: 0
   m_Name: Flame
   m_TagString: Untagged
@@ -1003,7 +1033,7 @@ Transform:
   - {fileID: 1923739716}
   m_Father: {fileID: 1187134014}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1057259031
+--- !u!114 &1057259032
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1012,11 +1042,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1057259029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b257c5bc5c9fda64da9908003a354eb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b0c10f3ecc38d24d8ef7e74cefc03c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotation: {x: 0, y: 0, z: 20}
-  _animationDuration: 0.08
+  _showSize: 1
+  _showOnStart: 1
 --- !u!1 &1187134012
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,6 +1232,7 @@ MonoBehaviour:
   - 350
   - 400
   - 500
+  FireIconAnimation: {fileID: 961501784}
 --- !u!1 &1375968607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,6 +1392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1667728476}
+  - component: {fileID: 1667728477}
   - component: {fileID: 1667728475}
   m_Layer: 0
   m_Name: Sprite
@@ -1439,6 +1471,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1796628132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 23.56}
+--- !u!114 &1667728477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667728474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b257c5bc5c9fda64da9908003a354eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 0, z: 20}
+  _animationDuration: 0.12
 --- !u!1 &1691045174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1479,7 +1525,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1796628132}
-  - component: {fileID: 1796628133}
+  - component: {fileID: 1796628134}
   m_Layer: 0
   m_Name: Flame
   m_TagString: Untagged
@@ -1503,7 +1549,7 @@ Transform:
   - {fileID: 1667728476}
   m_Father: {fileID: 1187134014}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1796628133
+--- !u!114 &1796628134
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1512,11 +1558,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1796628131}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b257c5bc5c9fda64da9908003a354eb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b0c10f3ecc38d24d8ef7e74cefc03c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotation: {x: 0, y: 0, z: 20}
-  _animationDuration: 0.12
+  _showSize: 1
+  _showOnStart: 1
 --- !u!1 &1891395794
 GameObject:
   m_ObjectHideFlags: 0
@@ -6395,6 +6441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1923739716}
+  - component: {fileID: 1923739718}
   - component: {fileID: 1923739717}
   m_Layer: 0
   m_Name: Sprite
@@ -6473,6 +6520,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1923739718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923739715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b257c5bc5c9fda64da9908003a354eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 0, z: 20}
+  _animationDuration: 0.08
 --- !u!1001 &1924316393
 PrefabInstance:
   m_ObjectHideFlags: 0

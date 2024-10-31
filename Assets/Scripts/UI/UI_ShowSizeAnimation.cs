@@ -35,6 +35,11 @@ public class UI_ShowSizeAnimation : MonoBehaviour
         sizeUp.AppendCallback(() => callback?.Invoke());
     }
 
+    public void SetShowSize(float newSize)
+    {
+        _showSize = newSize;
+    }
+
     private void OnDestroy()
     {
         transform.DOKill();

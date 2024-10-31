@@ -18,6 +18,7 @@ public class Bellows_MovingBar : MonoBehaviour
     [SerializeField] private Sprite _bellowsClose;
     public float CurrentCursorSpeed;
     [SerializeField] private List<float> _cursorSpeedList = new List<float>();
+    public UI_ShowSizeAnimation FireIconAnimation;
 
     private void Start()
     {
@@ -47,6 +48,7 @@ public class Bellows_MovingBar : MonoBehaviour
     public void CheckCursorPosition()
     {
         MovingCursor.Show();
+        FireIconAnimation.Show();
         StartCoroutine(CloseBellows());
 
         float cursorWidth = MovingCursor.GetComponent<Image>().rectTransform.sizeDelta.x;
