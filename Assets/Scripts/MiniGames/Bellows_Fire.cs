@@ -51,7 +51,7 @@ public class Bellows_Fire : MonoBehaviour
         SetFireSprite();
         onFireDown.Invoke();
         onSouffletWind.Invoke();
-        ScoreManager.Instance.RemoveMultiplicateur(1);
+        ScoreManager.Instance.ResetMultiplicateur();
         scoreTotal -= 50;
     }
 
