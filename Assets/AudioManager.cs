@@ -37,4 +37,10 @@ public class AudioManager : MonoBehaviour
     public UnityEvent onVoice2 = new UnityEvent();
     public UnityEvent onVoice3 = new UnityEvent();
     public UnityEvent onVoiceOff = new UnityEvent();
+    public UnityEvent onButtonOn = new UnityEvent();
+
+    private void Start()
+    {
+        onGameStart.Invoke();
+    }
 }
