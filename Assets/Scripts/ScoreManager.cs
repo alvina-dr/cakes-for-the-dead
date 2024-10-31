@@ -22,6 +22,7 @@ public class ScoreManager : MonoBehaviour
     #endregion
     public int multiActuel;
     public int scoreTempActuel;
+    public int scoreRecetteEnCours;
     public int TotalScore;
     public int NumberOfCustomerDay;
     public int DayNumber = 1;
@@ -52,6 +53,13 @@ public class ScoreManager : MonoBehaviour
 
     public void ResetMultiplicateur()
     {
+        multiActuel = 0;
+    }
+
+    public void CalculScore()
+    {
+        scoreRecetteEnCours = scoreTempActuel * multiActuel;
+        scoreTempActuel = 0;
         multiActuel = 0;
     }
 }

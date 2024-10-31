@@ -7,15 +7,39 @@ public class Pour_Mold : MonoBehaviour
     private int fullnessIndex = 0;
     [SerializeField] private TextMeshPro _fullnessIndicator;
     private int denies;
+    public bool fullnessbool = false;
+    public bool waterFalled = false;
+    public int fullnessReminder;
+    public float compteur;
 
     private void Start()
     {
         _fullnessIndicator.text = fullnessIndex.ToString();
     }
 
+    private void Update()
+    {
+        if (fullnessbool == false)
+        {
+            compteur += Time.deltaTime;
+            if (fullnessIndex != fullnessReminder)
+            { compteur = 0; }
+            if ( compteur > 0.2f)
+            {
+                AudioManager.Instance.onPourOff.Invoke();
+                fullnessbool = true;
+            }
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (fullnessbool)
+        {
+            AudioManager.Instance.onPour.Invoke();
+            fullnessbool = false;
+        }
+
         if ((FluidLayer & (1 << collision.gameObject.layer)) != 0)
         {
             fullnessIndex++;

@@ -32,6 +32,8 @@ public class Bellows_Fire : MonoBehaviour
         {
             CookingCurrentTime = 0;
             AudioManager.Instance.onChaudronSceneOff.Invoke();
+
+            ScoreManager.Instance.CalculScore();
             GameManager.Instance.EndMiniGame(); 
         }
     }
