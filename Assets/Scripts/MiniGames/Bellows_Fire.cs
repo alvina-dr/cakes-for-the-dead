@@ -31,6 +31,7 @@ public class Bellows_Fire : MonoBehaviour
         if (CookingCurrentTime > CookingDuration)
         {
             CookingCurrentTime = 0;
+            AudioManager.Instance.onChaudronSceneOff.Invoke();
             GameManager.Instance.EndMiniGame(); 
         }
     }

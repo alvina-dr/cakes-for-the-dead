@@ -64,6 +64,7 @@ public class DetectGrinding : MonoBehaviour
             StartCoroutine(EndMiniGameAnimation());
         }
         onGrind.Invoke();
+
         if (GrindIndex >= CurrentIngredientData.GrindedSpriteList.Count) return;
 
         CurrentIngredientSprite.sprite = CurrentIngredientData.GrindedSpriteList[GrindIndex];
