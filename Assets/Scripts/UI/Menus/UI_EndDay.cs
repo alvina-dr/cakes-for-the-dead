@@ -16,6 +16,7 @@ public class UI_EndDay : MonoBehaviour
     public UI_TextValue MoneyLeftText;
     public UI_ShowSizeAnimation ButtonNextDayAnimation;
     public UI_ShowSizeAnimation ButtonGameOverAnimation;
+    public UI_ShowSizeAnimation EvictionNoticeAnimation;
     [SerializeField] private string _winTextFX;
     [SerializeField] private string _looseTextFX;
 
@@ -52,9 +53,11 @@ public class UI_EndDay : MonoBehaviour
             //game over + set text to red
             //make game over button instead
             MoneyLeftText.GetComponent<TextMeshProUGUI>().color = Color.red;
+            MoneyLeftText.SetTextValue(_looseTextFX + moneyLeft.ToString(), false);
             animation.AppendInterval(.1f);
             animation.AppendCallback(() => ButtonGameOverAnimation.Show());
-            MoneyLeftText.SetTextValue(_looseTextFX + moneyLeft.ToString(), false);
+            animation.AppendInterval(.5f);
+            animation.AppendCallback(() => EvictionNoticeAnimation.Show());
         }
     }
 
