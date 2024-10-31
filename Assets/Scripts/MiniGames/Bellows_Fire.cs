@@ -47,6 +47,7 @@ public class Bellows_Fire : MonoBehaviour
         ScoreManager.Instance.AddMultiplicateur(1);
         scoreTotal += 100;
         AudioManager.Instance.onFireOn.Invoke();
+        AudioManager.Instance.onPerfect.Invoke();
     }
 
     public void ResetFireStrength()

@@ -183,24 +183,28 @@ public class AppearCutLines : MonoBehaviour
             else if (scoreCut > 75 && scoreCut < 90)
             {
                 ScoreManager.Instance.AddMultiplicateur(1);
+                AudioManager.Instance.onPerfect.Invoke();
             }
             else if (scoreCut > 90)
             {
                 ScoreManager.Instance.AddMultiplicateur(3);
+                AudioManager.Instance.onPerfect.Invoke();
             }
 
 
-            if (scoreTotal < 100)
+            if (scoreTotal < 50)
             {
                 ScoreManager.Instance.ResetMultiplicateur();
             }
             else if (scoreTotal > 275)
             {
                 ScoreManager.Instance.AddMultiplicateur(2);
+                AudioManager.Instance.onPerfect.Invoke();
             }
             else if (scoreTotal > 300)
             {
                 ScoreManager.Instance.AddMultiplicateur(6);
+                AudioManager.Instance.onPerfect.Invoke();
             }
 
 
