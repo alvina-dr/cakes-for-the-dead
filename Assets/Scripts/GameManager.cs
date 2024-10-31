@@ -47,12 +47,14 @@ public class GameManager : MonoBehaviour
         }
 
         Timer = GeneralData.DayDuration;
-        UIManager.TimerUI.SetTextValue(Mathf.RoundToInt(Timer).ToString());
-        UIManager.ScoreUI.SetTextValue(ScoreManager.Instance.TotalScore.ToString());
-        UIManager.DayUI.SetTextValue(ScoreManager.Instance.DayNumber.ToString());
+        UIManager.TimerUI.SetTextValue(Mathf.RoundToInt(Timer).ToString(), false);
+        UIManager.ScoreUI.SetTextValue(ScoreManager.Instance.TotalScore.ToString(), false);
+        UIManager.DayUI.SetTextValue(ScoreManager.Instance.DayNumber.ToString(), false);
         RentDue = GeneralData.BaseRent;
 
-        LaunchGame();
+        if (CurrentCustomerData == null) SelectRandomRecipe();
+
+        UIManager.MainMenu.Open();
     }
 
     private void Update()
@@ -70,11 +72,6 @@ public class GameManager : MonoBehaviour
             {
             }
         }
-    }
-
-    public void LaunchGame()
-    {
-        if (CurrentCustomerData == null) SelectRandomRecipe();
     }
 
     public void SelectRandomRecipe()
@@ -97,8 +94,8 @@ public class GameManager : MonoBehaviour
 
     public void FinishRecipe()
     {
-        UIManager.UI_EndRecipe.gameObject.SetActive(true);
-        UIManager.UI_EndRecipe.Open();
+        UIManager.EndRecipe.gameObject.SetActive(true);
+        UIManager.EndRecipe.Open();
         IsPlayerMakingRecipe = false;
         CurrentRecipeMiniGameIndex = 0;
     }
@@ -107,7 +104,7 @@ public class GameManager : MonoBehaviour
     public void CloseEndRecipe()
     {
         ScoreManager.Instance.NumberOfCustomerDay++;
-        UIManager.UI_EndRecipe.Close();
+        UIManager.EndRecipe.Close();
         CurrentCustomerData = null;
         DOVirtual.DelayedCall(.5f, () =>
         {
@@ -167,6 +164,13 @@ public class GameManager : MonoBehaviour
         UIManager.EndDayScene.Close();
         RentDue = GeneralData.BaseRent * (Mathf.RoundToInt(ScoreManager.Instance.DayNumber * GeneralData.RentMultiplier) + 1);
 
+    }
+
+    public void LaunchNewRun()
+    {
+        UIManager.MainMenu.Close();
+        UIManager.StartDay.gameObject.SetActive(true);
+        UIManager.StartDay.Open();
     }
 
     public void StartDay()

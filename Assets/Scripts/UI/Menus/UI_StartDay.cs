@@ -6,11 +6,6 @@ public class UI_StartDay : MonoBehaviour
     public UI_ShowSizeAnimation BookAnimation;
     public UI_ShowSizeAnimation ButtonStartDayAnimation;
 
-    private void Start()
-    {
-        Open();
-    }
-
     public void Open()
     {
         Sequence animation = DOTween.Sequence();

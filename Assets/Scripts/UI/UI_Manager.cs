@@ -11,5 +11,6 @@ public class UI_Manager : MonoBehaviour
     public UI_StartDay StartDay;
     public UI_NewCommand NewCommand;
     public UI_EndDay EndDayScene;
-    public UI_EndRecipe UI_EndRecipe;
+    public UI_EndRecipe EndRecipe;
+    public UI_MainMenu MainMenu;
 }
