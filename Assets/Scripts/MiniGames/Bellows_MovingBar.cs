@@ -30,7 +30,7 @@ public class Bellows_MovingBar : MonoBehaviour
             IsGoingRight = !IsGoingRight;
         }
 
-        MovingCursor.transform.position += new Vector3(CursorSpeed * (IsGoingRight ? 1 : -1), 0, 0);
+        MovingCursor.transform.position += new Vector3(CursorSpeed * (IsGoingRight ? 1 : -1) * Time.deltaTime, 0, 0);
     }
 
     public void CheckCursorPosition()

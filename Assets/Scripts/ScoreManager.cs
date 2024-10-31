@@ -24,6 +24,7 @@ public class ScoreManager : MonoBehaviour
     public int scoreTempActuel;
     public int TotalScore;
     public int NumberOfCustomerDay;
+    public int DayNumber = 1;
     public TMP_Text scoreText;
     public TMP_Text multitext;
 

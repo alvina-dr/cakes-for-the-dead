@@ -30044,7 +30044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leftMax: -5
   _rightMax: 5
-  _bucketSpeed: 0.02
+  _bucketSpeed: 2
 --- !u!1 &1357734760
 GameObject:
   m_ObjectHideFlags: 0

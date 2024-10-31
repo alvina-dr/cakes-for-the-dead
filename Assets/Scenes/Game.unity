@@ -2206,12 +2206,12 @@ MonoBehaviour:
   GeneralData: {fileID: 11400000, guid: 0fdacd2df385f6642bf324f381570d1f, type: 2}
   UIManager: {fileID: 1257838411}
   RecipeDataList: []
-  CurrentRecipeData: {fileID: 11400000, guid: e7abbff4d21df3b49a61b59745884c5c, type: 2}
+  CurrentRecipeData: {fileID: 11400000, guid: 0e93799a9f82df64b9a686e670940783, type: 2}
   CurrentRecipeMiniGameIndex: 0
   Timer: 0
   IsFirstGameLaunched: 0
   IsPlayerMakingRecipe: 0
-  TotalCurrentScore: 0
+  RentDue: 0
 --- !u!4 &764833401
 Transform:
   m_ObjectHideFlags: 0
@@ -3799,6 +3799,7 @@ MonoBehaviour:
   scoreTempActuel: 0
   TotalScore: 0
   NumberOfCustomerDay: 0
+  DayNumber: 1
   scoreText: {fileID: 1997777621}
   multitext: {fileID: 2033858902}
 --- !u!4 &1956201150

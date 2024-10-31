@@ -4,4 +4,6 @@ using UnityEngine;
 public class GeneralData : ScriptableObject
 {
     public float DayDuration;
+    public int BaseRent;
+    public float RentMultiplier;
 }

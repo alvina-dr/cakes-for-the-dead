@@ -20,7 +20,7 @@ public class Pour_CheckBucket : MonoBehaviour
 
     private IEnumerator WaitDropFalling()
     {
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(2.0f);
         if (GameManager.Instance != null)
         {
             GameManager.Instance.EndMiniGame();

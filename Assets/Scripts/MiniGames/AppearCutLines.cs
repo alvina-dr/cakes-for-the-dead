@@ -43,7 +43,6 @@ public class AppearCutLines : MonoBehaviour
         {
             //End game -> here add to total score
             GameManager.Instance.EndMiniGame();
-            GameManager.Instance.AddToTotalScore(scoreTotal);
         }
         
         Decoupe();

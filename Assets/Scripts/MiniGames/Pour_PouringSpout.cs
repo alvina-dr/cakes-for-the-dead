@@ -19,7 +19,7 @@ public class Pour_PouringSpout : MonoBehaviour
             _isGoingRight = !_isGoingRight;
         }
 
-        transform.position += new Vector3(_bucketSpeed * (_isGoingRight ? 1 : -1), 0, 0);
+        transform.position += new Vector3(_bucketSpeed * (_isGoingRight ? 1 : -1) * Time.deltaTime, 0, 0);
     }
 
     public void OnMouseDown()

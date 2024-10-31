@@ -34,9 +34,7 @@ public class GameManager : MonoBehaviour
     public float Timer = 0;
     public bool IsFirstGameLaunched = false;
     public bool IsPlayerMakingRecipe = false;
-
-    [Header("Score")]
-    public int TotalCurrentScore = 0;
+    public int RentDue;
 
     private void Start()
     {
@@ -50,6 +48,8 @@ public class GameManager : MonoBehaviour
         Timer = GeneralData.DayDuration;
         UIManager.TimerUI.SetTextValue(Mathf.RoundToInt(Timer).ToString());
         UIManager.ScoreUI.SetTextValue(ScoreManager.Instance.TotalScore.ToString());
+        UIManager.DayUI.SetTextValue(ScoreManager.Instance.DayNumber.ToString());
+        RentDue = GeneralData.BaseRent;
 
         LaunchGame();
     }
@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
     {
         ScoreManager.Instance.NumberOfCustomerDay++;
         UIManager.UI_EndRecipe.Close();
+        CurrentRecipeData = null;
         DOVirtual.DelayedCall(.5f, () =>
         {
             if (Timer <= 0)
@@ -115,8 +116,6 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                //show next recipe
-                Debug.Log("next command");
                 NextCommand();
             }
         });
@@ -124,7 +123,7 @@ public class GameManager : MonoBehaviour
 
     public void NextCommand()
     {
-        SelectRandomRecipe();
+        if (CurrentRecipeData == null) SelectRandomRecipe();
         UIManager.NewCommand.gameObject.SetActive(true);
         UIManager.NewCommand.Open();
     }
@@ -146,11 +145,8 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.UnloadSceneAsync(GetCurrentMiniGame().MiniGameLevelName);
         CurrentRecipeMiniGameIndex++;
-        if (CurrentRecipeMiniGameIndex >= CurrentRecipeData.MiniGameList.Count)
+        if (CurrentRecipeMiniGameIndex >= CurrentRecipeData.MiniGameList.Count) //end recipe
         {
-            //end recipe
-            //select new recipe
-            //show final result
             FinishRecipe();
         }
         else //load next minigame
@@ -161,9 +157,15 @@ public class GameManager : MonoBehaviour
 
     public void NextDay()
     {
+        UIManager.TimerUI.SetTextValue(Mathf.RoundToInt(Timer).ToString());
+        UIManager.ScoreUI.SetTextValue(ScoreManager.Instance.TotalScore.ToString());
+        ScoreManager.Instance.DayNumber++;
+        UIManager.DayUI.SetTextValue(ScoreManager.Instance.DayNumber.ToString());
         UIManager.StartDay.gameObject.SetActive(true);
         UIManager.StartDay.Open();
         UIManager.EndDayScene.Close();
+        RentDue = GeneralData.BaseRent * (Mathf.RoundToInt(ScoreManager.Instance.DayNumber * GeneralData.RentMultiplier) + 1);
+
     }
 
     public void StartDay()
@@ -176,17 +178,8 @@ public class GameManager : MonoBehaviour
     public void EndDay()
     {
         Timer = GeneralData.DayDuration;
-        UIManager.TimerUI.SetTextValue(Mathf.RoundToInt(Timer).ToString());
         IsFirstGameLaunched = false;
         UIManager.EndDayScene.gameObject.SetActive(true);
         UIManager.EndDayScene.Open();
-        //show interface for end of day
-        //check if enough score
-    }
-
-    public void AddToTotalScore(int score)
-    {
-        //here add small animation that indicates the score gained in the minigame
-        TotalCurrentScore += score;
     }
 }

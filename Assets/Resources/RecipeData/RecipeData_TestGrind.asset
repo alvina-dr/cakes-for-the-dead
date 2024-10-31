@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33fd747bd854a59469091eaf8e3ebdaa, type: 3}
-  m_Name: GeneralData
+  m_Script: {fileID: 11500000, guid: b8345199d4a1e404dac6ff00a3690756, type: 3}
+  m_Name: RecipeData_TestGrind
   m_EditorClassIdentifier: 
-  DayDuration: 180
-  BaseRent: 500
-  RentMultiplier: 0.1
+  CakeSprite: {fileID: 21300000, guid: adb0a712c25249d46a8d00671747fc76, type: 3}
+  CakeName: YOOO
+  MiniGameList:
+  - {fileID: 11400000, guid: fa513d4d15e8e58499444639ff7bfbae, type: 2}

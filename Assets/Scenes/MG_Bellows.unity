@@ -1175,7 +1175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Fire: {fileID: 1187134015}
   MovingCursor: {fileID: 863222478}
-  CursorSpeed: 3
+  CursorSpeed: 300
   TargetZone: {fileID: 2021591445}
   IsGoingRight: 1
   _bellowsSpriteRenderer: {fileID: 260457528}

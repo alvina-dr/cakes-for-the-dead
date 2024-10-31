@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +8,7 @@ public class DetectGrinding : MonoBehaviour
     [Header("Components")]
     public SpriteRenderer CurrentIngredientSprite;
     public IngredientData CurrentIngredientData;
+    public UI_ShowSizeAnimation Pestle;
     public int GrindIndex = 0;
 
     private Camera mainCamera;
@@ -45,16 +47,29 @@ public class DetectGrinding : MonoBehaviour
         ScoreManager.Instance.AddMultiplicateur(1);
         onGrind.Invoke();
         GrindIndex++;
-        if (GrindIndex >= CurrentIngredientData.GrindedSpriteList.Count)
+
+        if (GrindIndex == CurrentIngredientData.GrindedSpriteList.Count)
         {
+            //start particles
             CheckForCombo();
             CheckForScore();
             ScoreManager.Instance.scoreTempActuel = Mathf.CeilToInt(scoreTotal);
-            GameManager.Instance.EndMiniGame();
-            return;
+            Pestle.Hide(() => Destroy(Pestle.gameObject));
+            StartCoroutine(EndMiniGameAnimation());
         }
 
+        if (GrindIndex >= CurrentIngredientData.GrindedSpriteList.Count) return;
+
         CurrentIngredientSprite.sprite = CurrentIngredientData.GrindedSpriteList[GrindIndex];
+    }
+
+    private IEnumerator EndMiniGameAnimation()
+    {
+        yield return new WaitForSeconds(2.0f);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.EndMiniGame();
+        }
     }
 
     public void CheckForCombo()
