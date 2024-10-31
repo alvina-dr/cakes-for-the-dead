@@ -1,11 +1,12 @@
 using System.Collections;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Bellows_MovingBar : MonoBehaviour
 {
     public Bellows_Fire Fire;
-    public Image MovingCursor;
+    public UI_ShowSizeAnimation MovingCursor;
     public float CursorSpeed;
     public Image TargetZone;
     public bool IsGoingRight = true;
@@ -25,9 +26,16 @@ public class Bellows_MovingBar : MonoBehaviour
 
     public void Update()
     {
-        if (MovingCursor.transform.position.x > _rightMaxPosition || MovingCursor.transform.position.x < _leftMaxPosition)
+        if (MovingCursor.transform.position.x >= _rightMaxPosition)
         {
             IsGoingRight = !IsGoingRight;
+            MovingCursor.transform.position = new Vector3(_rightMaxPosition, MovingCursor.transform.position.y, 0);
+        }
+
+        if (MovingCursor.transform.position.x <= _leftMaxPosition)
+        {
+            IsGoingRight = !IsGoingRight;
+            MovingCursor.transform.position = new Vector3(_leftMaxPosition, MovingCursor.transform.position.y, 0);
         }
 
         MovingCursor.transform.position += new Vector3(CursorSpeed * (IsGoingRight ? 1 : -1) * Time.deltaTime, 0, 0);
@@ -35,9 +43,10 @@ public class Bellows_MovingBar : MonoBehaviour
 
     public void CheckCursorPosition()
     {
+        MovingCursor.Show();
         StartCoroutine(CloseBellows());
 
-        float cursorWidth = MovingCursor.rectTransform.sizeDelta.x;
+        float cursorWidth = MovingCursor.GetComponent<Image>().rectTransform.sizeDelta.x;
         float rightMovingCursor = MovingCursor.transform.position.x + cursorWidth / 2;
         float leftMovingCursor = MovingCursor.transform.position.x - cursorWidth / 2;
 

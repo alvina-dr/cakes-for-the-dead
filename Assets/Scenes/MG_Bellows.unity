@@ -769,10 +769,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 863222477}
+  - component: {fileID: 863222480}
   - component: {fileID: 863222479}
   - component: {fileID: 863222478}
   m_Layer: 5
-  m_Name: MovingSquare
+  m_Name: MovingCursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -835,6 +836,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863222476}
   m_CullTransparentMesh: 1
+--- !u!114 &863222480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863222476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0c10f3ecc38d24d8ef7e74cefc03c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showSize: 1
+  _showOnStart: 1
 --- !u!1 &870453611
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,7 +1189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Fire: {fileID: 1187134015}
-  MovingCursor: {fileID: 863222478}
+  MovingCursor: {fileID: 863222480}
   CursorSpeed: 300
   TargetZone: {fileID: 2021591445}
   IsGoingRight: 1
@@ -6612,6 +6627,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2021591444}
   - component: {fileID: 2021591446}
+  - component: {fileID: 2021591447}
   - component: {fileID: 2021591445}
   m_Layer: 5
   m_Name: TargetZone
@@ -6677,6 +6693,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021591443}
   m_CullTransparentMesh: 1
+--- !u!114 &2021591447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021591443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0c10f3ecc38d24d8ef7e74cefc03c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showSize: 1
+  _showOnStart: 1
 --- !u!1 &2071775224
 GameObject:
   m_ObjectHideFlags: 0
