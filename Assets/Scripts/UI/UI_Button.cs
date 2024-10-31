@@ -31,7 +31,7 @@ public class UI_Button : MonoBehaviour, ISelectHandler, IDeselectHandler, IPoint
 
     private void OnClick()
     {
-
+        AudioManager.Instance.onButtonOn.Invoke();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -48,4 +48,6 @@ public class UI_Button : MonoBehaviour, ISelectHandler, IDeselectHandler, IPoint
     {
         transform.DOKill();
     }
+
+    
 }
