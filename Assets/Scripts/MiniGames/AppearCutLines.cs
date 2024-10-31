@@ -17,6 +17,8 @@ public class AppearCutLines : MonoBehaviour
     public List<GameObject> mouseLines = new List<GameObject>();
     private Vector3 startCutPosition; 
     private Vector3 mousePosition;
+    [SerializeField]
+    private TrailRenderer trail;
 
     [SerializeField]
     private Transform parentLines;
@@ -35,6 +37,7 @@ public class AppearCutLines : MonoBehaviour
 
     void Update()
     {
+
         if (!makeAppearLines && !gameStarted && linesLeft > 0)
         {
             makeAppearLines = true;
@@ -100,6 +103,7 @@ public class AppearCutLines : MonoBehaviour
     {
         Vector3 mousePos = Input.mousePosition + new Vector3(0, 0, 10);
         mousePosition = Camera.main.ScreenToWorldPoint(mousePos);
+
         if (makeAppearLines)
         {
             Lines();
@@ -110,6 +114,8 @@ public class AppearCutLines : MonoBehaviour
         if (gameStarted && Input.GetMouseButtonDown(0))
         {
             isPressed = true;
+            trail.enabled = true;
+            trail.transform.position = new Vector3(mousePosition.x, mousePosition.y, -1);
         }
         if (gameStarted && isPressed && Input.GetMouseButton(0))
         {
@@ -189,6 +195,7 @@ public class AppearCutLines : MonoBehaviour
             #endregion
             DestroyLines();
             gameStarted = false;
+            trail.enabled = false;
         }
     }
 }
