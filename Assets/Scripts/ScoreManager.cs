@@ -30,6 +30,11 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
+        if (scoreTempActuel < 0)
+        {
+            scoreTempActuel = 0;
+        }
+
         multitext.text = "x" + multiActuel;
         scoreText.text = scoreTempActuel.ToString();
     }
