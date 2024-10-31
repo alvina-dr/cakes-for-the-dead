@@ -12,4 +12,9 @@ public class UI_RotateAnimation : MonoBehaviour
     {
         transform.DORotate(_rotation, _animationDuration).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
     }
+
+    private void OnDestroy()
+    {
+        transform.DOKill();
+    }
 }

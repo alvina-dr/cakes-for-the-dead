@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -65,7 +66,6 @@ public class GameManager : MonoBehaviour
             Timer = 0;
             if (!IsPlayerMakingRecipe)
             {
-                EndDay();
             }
         }
     }
@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour
     public void LaunchGame()
     {
         if (CurrentRecipeData == null) SelectRandomRecipe();
-        UIManager.RecipeRequest.SetupRecipeRequest(CurrentRecipeData);
     }
 
     public void SelectRandomRecipe()
@@ -83,7 +82,6 @@ public class GameManager : MonoBehaviour
 
     public void LaunchRecipe()
     {
-        UIManager.MainScene.SetActive(false);
         IsFirstGameLaunched = true;
         IsPlayerMakingRecipe = true;
         if (CurrentRecipeData == null)
@@ -97,16 +95,43 @@ public class GameManager : MonoBehaviour
 
     public void FinishRecipe()
     {
-        UIManager.EndRecipeScene.SetActive(true);
+        UIManager.UI_EndRecipe.gameObject.SetActive(true);
+        UIManager.UI_EndRecipe.Open();
         IsPlayerMakingRecipe = false;
         CurrentRecipeMiniGameIndex = 0;
     }
 
-    public void NextRecipe()
+    //Called by button Close in menu EndRecipe
+    public void CloseEndRecipe()
+    {
+        UIManager.UI_EndRecipe.Close();
+        DOVirtual.DelayedCall(.5f, () =>
+        {
+            if (Timer <= 0)
+            {
+                EndDay();
+            }
+            else
+            {
+                //show next recipe
+                Debug.Log("next command");
+                NextCommand();
+            }
+        });
+    }
+
+    public void NextCommand()
     {
         SelectRandomRecipe();
-        UIManager.RecipeRequest.SetupRecipeRequest(CurrentRecipeData);
-        //show dialog
+        UIManager.NewCommand.gameObject.SetActive(true);
+        UIManager.NewCommand.Open();
+    }
+
+    //In new command menu, button prepare calls this function
+    public void AcceptCommand()
+    {
+        UIManager.NewCommand.Hide();
+        DOVirtual.DelayedCall(.8f, () => LaunchRecipe());
     }
 
     public MiniGameData GetCurrentMiniGame()
@@ -132,12 +157,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void NextDay()
+    {
+        UIManager.StartDay.gameObject.SetActive(true);
+        UIManager.StartDay.Open();
+        UIManager.EndDayScene.Close();
+    }
+
+    public void StartDay()
+    {
+        UIManager.StartDay.Hide();
+        NextCommand();
+    }
+
     public void EndDay()
     {
         Timer = GeneralData.DayDuration;
         UIManager.TimerUI.SetTextValue(Mathf.RoundToInt(Timer).ToString());
         IsFirstGameLaunched = false;
-        UIManager.EndDayScene.SetActive(true);
+        UIManager.EndDayScene.gameObject.SetActive(true);
+        UIManager.EndDayScene.Open();
         //show interface for end of day
         //check if enough score
     }
