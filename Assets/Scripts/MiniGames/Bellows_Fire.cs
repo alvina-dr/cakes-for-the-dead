@@ -20,6 +20,7 @@ public class Bellows_Fire : MonoBehaviour
     {
         scoreTotal = 0;
         SetFireSprite();
+        AudioManager.Instance.onChaudronScene.Invoke();
     }
 
     private void Update()
@@ -41,8 +42,10 @@ public class Bellows_Fire : MonoBehaviour
         onFireUp.Invoke();
         onPerfectSoufflet.Invoke();
         onSouffletWind.Invoke();
+        AudioManager.Instance.onSoufflet.Invoke();
         ScoreManager.Instance.AddMultiplicateur(1);
         scoreTotal += 100;
+        AudioManager.Instance.onFireOn.Invoke();
     }
 
     public void ResetFireStrength()
@@ -52,6 +55,8 @@ public class Bellows_Fire : MonoBehaviour
         onFireDown.Invoke();
         onSouffletWind.Invoke();
         ScoreManager.Instance.ResetMultiplicateur();
+        AudioManager.Instance.onFireOff.Invoke();
+        AudioManager.Instance.onSoufflet.Invoke();
         scoreTotal -= 50;
     }
 

@@ -8,7 +8,7 @@ public class Pour_CheckBucket : MonoBehaviour
     [SerializeField]
     private int _numDrops;
     private int _currentNumDrop;
-
+    private bool waterSoundOn = false;
     public void Update()
     {
         if (_currentNumDrop == _numDrops)
@@ -29,6 +29,11 @@ public class Pour_CheckBucket : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!waterSoundOn)
+        {
+            AudioManager.Instance.onPour.Invoke();
+            waterSoundOn = true;
+        }
         if ((FluidLayer & (1 << collision.gameObject.layer)) != 0)
         {
             _currentNumDrop++;
